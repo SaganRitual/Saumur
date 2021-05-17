@@ -1,0 +1,590 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D46DD219265264C40063E583 /* SaumurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD218265264C40063E583 /* SaumurApp.swift */; };
+		D46DD21B265264C40063E583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD21A265264C40063E583 /* ContentView.swift */; };
+		D46DD21D265264C40063E583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21C265264C40063E583 /* Assets.xcassets */; };
+		D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21F265264C40063E583 /* Preview Assets.xcassets */; };
+		D46DD22C265264C50063E583 /* SaumurTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD22B265264C50063E583 /* SaumurTests.swift */; };
+		D46DD237265264C50063E583 /* SaumurUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD236265264C50063E583 /* SaumurUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D46DD228265264C50063E583 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46DD20D265264C40063E583 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D46DD214265264C40063E583;
+			remoteInfo = Saumur;
+		};
+		D46DD233265264C50063E583 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46DD20D265264C40063E583 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D46DD214265264C40063E583;
+			remoteInfo = Saumur;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D46DD215265264C40063E583 /* Saumur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saumur.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46DD218265264C40063E583 /* SaumurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurApp.swift; sourceTree = "<group>"; };
+		D46DD21A265264C40063E583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D46DD21C265264C40063E583 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D46DD21F265264C40063E583 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D46DD221265264C40063E583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46DD222265264C40063E583 /* Saumur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Saumur.entitlements; sourceTree = "<group>"; };
+		D46DD227265264C50063E583 /* SaumurTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaumurTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46DD22B265264C50063E583 /* SaumurTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurTests.swift; sourceTree = "<group>"; };
+		D46DD22D265264C50063E583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46DD232265264C50063E583 /* SaumurUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaumurUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46DD236265264C50063E583 /* SaumurUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurUITests.swift; sourceTree = "<group>"; };
+		D46DD238265264C50063E583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D46DD212265264C40063E583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46DD224265264C50063E583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46DD22F265264C50063E583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D46DD20C265264C40063E583 = {
+			isa = PBXGroup;
+			children = (
+				D46DD217265264C40063E583 /* Saumur */,
+				D46DD22A265264C50063E583 /* SaumurTests */,
+				D46DD235265264C50063E583 /* SaumurUITests */,
+				D46DD216265264C40063E583 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D46DD216265264C40063E583 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD215265264C40063E583 /* Saumur.app */,
+				D46DD227265264C50063E583 /* SaumurTests.xctest */,
+				D46DD232265264C50063E583 /* SaumurUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D46DD217265264C40063E583 /* Saumur */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD218265264C40063E583 /* SaumurApp.swift */,
+				D46DD21A265264C40063E583 /* ContentView.swift */,
+				D46DD21C265264C40063E583 /* Assets.xcassets */,
+				D46DD221265264C40063E583 /* Info.plist */,
+				D46DD222265264C40063E583 /* Saumur.entitlements */,
+				D46DD21E265264C40063E583 /* Preview Content */,
+			);
+			path = Saumur;
+			sourceTree = "<group>";
+		};
+		D46DD21E265264C40063E583 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD21F265264C40063E583 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D46DD22A265264C50063E583 /* SaumurTests */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD22B265264C50063E583 /* SaumurTests.swift */,
+				D46DD22D265264C50063E583 /* Info.plist */,
+			);
+			path = SaumurTests;
+			sourceTree = "<group>";
+		};
+		D46DD235265264C50063E583 /* SaumurUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD236265264C50063E583 /* SaumurUITests.swift */,
+				D46DD238265264C50063E583 /* Info.plist */,
+			);
+			path = SaumurUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D46DD214265264C40063E583 /* Saumur */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D46DD23B265264C50063E583 /* Build configuration list for PBXNativeTarget "Saumur" */;
+			buildPhases = (
+				D46DD211265264C40063E583 /* Sources */,
+				D46DD212265264C40063E583 /* Frameworks */,
+				D46DD213265264C40063E583 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Saumur;
+			productName = Saumur;
+			productReference = D46DD215265264C40063E583 /* Saumur.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D46DD226265264C50063E583 /* SaumurTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D46DD23E265264C50063E583 /* Build configuration list for PBXNativeTarget "SaumurTests" */;
+			buildPhases = (
+				D46DD223265264C50063E583 /* Sources */,
+				D46DD224265264C50063E583 /* Frameworks */,
+				D46DD225265264C50063E583 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D46DD229265264C50063E583 /* PBXTargetDependency */,
+			);
+			name = SaumurTests;
+			productName = SaumurTests;
+			productReference = D46DD227265264C50063E583 /* SaumurTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D46DD231265264C50063E583 /* SaumurUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D46DD241265264C50063E583 /* Build configuration list for PBXNativeTarget "SaumurUITests" */;
+			buildPhases = (
+				D46DD22E265264C50063E583 /* Sources */,
+				D46DD22F265264C50063E583 /* Frameworks */,
+				D46DD230265264C50063E583 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D46DD234265264C50063E583 /* PBXTargetDependency */,
+			);
+			name = SaumurUITests;
+			productName = SaumurUITests;
+			productReference = D46DD232265264C50063E583 /* SaumurUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D46DD20D265264C40063E583 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					D46DD214265264C40063E583 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					D46DD226265264C50063E583 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = D46DD214265264C40063E583;
+					};
+					D46DD231265264C50063E583 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = D46DD214265264C40063E583;
+					};
+				};
+			};
+			buildConfigurationList = D46DD210265264C40063E583 /* Build configuration list for PBXProject "Saumur" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D46DD20C265264C40063E583;
+			productRefGroup = D46DD216265264C40063E583 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D46DD214265264C40063E583 /* Saumur */,
+				D46DD226265264C50063E583 /* SaumurTests */,
+				D46DD231265264C50063E583 /* SaumurUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D46DD213265264C40063E583 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */,
+				D46DD21D265264C40063E583 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46DD225265264C50063E583 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46DD230265264C50063E583 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D46DD211265264C40063E583 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46DD21B265264C40063E583 /* ContentView.swift in Sources */,
+				D46DD219265264C40063E583 /* SaumurApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46DD223265264C50063E583 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46DD22C265264C50063E583 /* SaumurTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46DD22E265264C50063E583 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D46DD237265264C50063E583 /* SaumurUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D46DD229265264C50063E583 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D46DD214265264C40063E583 /* Saumur */;
+			targetProxy = D46DD228265264C50063E583 /* PBXContainerItemProxy */;
+		};
+		D46DD234265264C50063E583 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D46DD214265264C40063E583 /* Saumur */;
+			targetProxy = D46DD233265264C50063E583 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D46DD239265264C50063E583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D46DD23A265264C50063E583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		D46DD23C265264C50063E583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Saumur/Saumur.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Saumur/Preview Content\"";
+				DEVELOPMENT_TEAM = DD983V4X84;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Saumur/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringsoftware.Saumur;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D46DD23D265264C50063E583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Saumur/Saumur.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Saumur/Preview Content\"";
+				DEVELOPMENT_TEAM = DD983V4X84;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Saumur/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringsoftware.Saumur;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D46DD23F265264C50063E583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DD983V4X84;
+				INFOPLIST_FILE = SaumurTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringsoftware.SaumurTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Saumur.app/Contents/MacOS/Saumur";
+			};
+			name = Debug;
+		};
+		D46DD240265264C50063E583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DD983V4X84;
+				INFOPLIST_FILE = SaumurTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringsoftware.SaumurTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Saumur.app/Contents/MacOS/Saumur";
+			};
+			name = Release;
+		};
+		D46DD242265264C50063E583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DD983V4X84;
+				INFOPLIST_FILE = SaumurUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringsoftware.SaumurUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Saumur;
+			};
+			name = Debug;
+		};
+		D46DD243265264C50063E583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DD983V4X84;
+				INFOPLIST_FILE = SaumurUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringsoftware.SaumurUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Saumur;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D46DD210265264C40063E583 /* Build configuration list for PBXProject "Saumur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46DD239265264C50063E583 /* Debug */,
+				D46DD23A265264C50063E583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D46DD23B265264C50063E583 /* Build configuration list for PBXNativeTarget "Saumur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46DD23C265264C50063E583 /* Debug */,
+				D46DD23D265264C50063E583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D46DD23E265264C50063E583 /* Build configuration list for PBXNativeTarget "SaumurTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46DD23F265264C50063E583 /* Debug */,
+				D46DD240265264C50063E583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D46DD241265264C50063E583 /* Build configuration list for PBXNativeTarget "SaumurUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46DD242265264C50063E583 /* Debug */,
+				D46DD243265264C50063E583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D46DD20D265264C40063E583 /* Project object */;
+}
