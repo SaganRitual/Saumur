@@ -75,7 +75,9 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
         self.addChild(box)
 
-        box.position = CGPoint(x: 0, y: 0)
+        let hw = size.width / 2
+        let hh = size.height / 2
+        box.position = CGPoint(x: CGFloat.random(in: -hw...hw), y: CGFloat.random(in: -hh...hh))
         box.physicsBody = p1
 
         self.boxes.append(box)
@@ -111,12 +113,12 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         boundaryNode.physicsBody = boundary
         self.addChild(boundaryNode)
 
-        let dragNode = SKFieldNode.dragField()
-        dragNode.strength = 0.5
-        self.addChild(dragNode)
+//        let dragNode = SKFieldNode.dragField()
+//        dragNode.strength = 1
+//        self.addChild(dragNode)
 
         makeBox(color: .green)
-        makeBox(color: .orange)
+//        makeBox(color: .orange)
         startPulse()
 
         backgroundColor = .black
@@ -130,24 +132,22 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
     }
 
     func pulse(_ box: Int) {
-        let radius = CGFloat.random(in: 5..<10)
+        let radius = CGFloat(3)// CGFloat.random(in: 5..<10)
         let theta = CGFloat.random(in: 0..<(2 * .pi))
 
         let sequence: SKAction
         if box % 2 == 0 {
-            let p1 = SKAction.applyForce(CGVector(radius: radius, theta: theta), duration: 0.5)
-            let p2 = SKAction.wait(forDuration: 0.5)
-//            let p3 = SKAction.applyForce(CGVector(radius: -radius, theta: theta), duration: 0.5)
-//            let p4 = SKAction.wait(forDuration: 0.5)
+            let p1 = SKAction.applyImpulse(CGVector(radius: radius, theta: theta), duration: 0.1)
+            let p3 = SKAction.applyForce(CGVector(radius: -0.75 * radius, theta: theta), duration: 1.25)
+            let p4 = SKAction.wait(forDuration: 1)
 
-            sequence = SKAction.sequence([p1, p2])
+            sequence = SKAction.sequence([p1, p3, p4])
         } else {
             let p1 = SKAction.applyImpulse(CGVector(radius: radius, theta: theta), duration: 0.5)
-            let p2 = SKAction.wait(forDuration: 0.5)
-//            let p3 = SKAction.applyImpulse(CGVector(radius: -radius, theta: theta), duration: 0.5)
-//            let p4 = SKAction.wait(forDuration: 0.5)
+            let p2 = SKAction.applyImpulse(CGVector(radius: -radius, theta: theta), duration: 0.1)
+            let p3 = SKAction.wait(forDuration: 1)
 
-            sequence = SKAction.sequence([p1, p2])
+            sequence = SKAction.sequence([p1, p2, p3])
         }
 
         boxes[box].run(sequence) { self.pulse(box) }
