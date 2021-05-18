@@ -9,10 +9,22 @@
 /* Begin PBXBuildFile section */
 		D46DD219265264C40063E583 /* SaumurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD218265264C40063E583 /* SaumurApp.swift */; };
 		D46DD21B265264C40063E583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD21A265264C40063E583 /* ContentView.swift */; };
-		D46DD21D265264C40063E583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21C265264C40063E583 /* Assets.xcassets */; };
 		D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21F265264C40063E583 /* Preview Assets.xcassets */; };
 		D46DD22C265264C50063E583 /* SaumurTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD22B265264C50063E583 /* SaumurTests.swift */; };
 		D46DD237265264C50063E583 /* SaumurUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD236265264C50063E583 /* SaumurUITests.swift */; };
+		D46DD2452652652E0063E583 /* SaumurAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD2442652652E0063E583 /* SaumurAppDelegate.swift */; };
+		D46DD248265265650063E583 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD247265265650063E583 /* Config.swift */; };
+		D46DD250265266430063E583 /* SceneDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD24B265266430063E583 /* SceneDispatch.swift */; };
+		D46DD251265266430063E583 /* ArenaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD24C265266430063E583 /* ArenaScene.swift */; };
+		D46DD253265266430063E583 /* SpritePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD24E265266430063E583 /* SpritePool.swift */; };
+		D46DD256265266F50063E583 /* GridPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD254265266F50063E583 /* GridPoint.swift */; };
+		D46DD257265266F50063E583 /* Overload2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD255265266F50063E583 /* Overload2D.swift */; };
+		D46DD259265267CA0063E583 /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD258265267CA0063E583 /* Deque.swift */; };
+		D46DD25B2652F6640063E583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD25A2652F6640063E583 /* Assets.xcassets */; };
+		D46DD25E2653B6760063E583 /* .overcommit.yml in Resources */ = {isa = PBXBuildFile; fileRef = D46DD25C2653B6760063E583 /* .overcommit.yml */; };
+		D46DD25F2653B6760063E583 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D46DD25D2653B6760063E583 /* .swiftlint.yml */; };
+		D46DD2622653B68D0063E583 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D46DD2602653B68D0063E583 /* .gitignore */; };
+		D46DD2632653B68D0063E583 /* swiftlint.sh in Resources */ = {isa = PBXBuildFile; fileRef = D46DD2612653B68D0063E583 /* swiftlint.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +48,6 @@
 		D46DD215265264C40063E583 /* Saumur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saumur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DD218265264C40063E583 /* SaumurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurApp.swift; sourceTree = "<group>"; };
 		D46DD21A265264C40063E583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D46DD21C265264C40063E583 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D46DD21F265264C40063E583 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D46DD221265264C40063E583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46DD222265264C40063E583 /* Saumur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Saumur.entitlements; sourceTree = "<group>"; };
@@ -46,6 +57,19 @@
 		D46DD232265264C50063E583 /* SaumurUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaumurUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DD236265264C50063E583 /* SaumurUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurUITests.swift; sourceTree = "<group>"; };
 		D46DD238265264C50063E583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46DD2442652652E0063E583 /* SaumurAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurAppDelegate.swift; sourceTree = "<group>"; };
+		D46DD247265265650063E583 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D46DD24B265266430063E583 /* SceneDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDispatch.swift; sourceTree = "<group>"; };
+		D46DD24C265266430063E583 /* ArenaScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArenaScene.swift; sourceTree = "<group>"; };
+		D46DD24E265266430063E583 /* SpritePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpritePool.swift; sourceTree = "<group>"; };
+		D46DD254265266F50063E583 /* GridPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridPoint.swift; sourceTree = "<group>"; };
+		D46DD255265266F50063E583 /* Overload2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overload2D.swift; sourceTree = "<group>"; };
+		D46DD258265267CA0063E583 /* Deque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
+		D46DD25A2652F6640063E583 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D46DD25C2653B6760063E583 /* .overcommit.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .overcommit.yml; sourceTree = "<group>"; };
+		D46DD25D2653B6760063E583 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D46DD2602653B68D0063E583 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D46DD2612653B68D0063E583 /* swiftlint.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +100,11 @@
 		D46DD20C265264C40063E583 = {
 			isa = PBXGroup;
 			children = (
+				D46DD2602653B68D0063E583 /* .gitignore */,
+				D46DD25C2653B6760063E583 /* .overcommit.yml */,
+				D46DD25D2653B6760063E583 /* .swiftlint.yml */,
+				D46DD2612653B68D0063E583 /* swiftlint.sh */,
+				D46DD246265265590063E583 /* Source */,
 				D46DD217265264C40063E583 /* Saumur */,
 				D46DD22A265264C50063E583 /* SaumurTests */,
 				D46DD235265264C50063E583 /* SaumurUITests */,
@@ -97,10 +126,11 @@
 			isa = PBXGroup;
 			children = (
 				D46DD218265264C40063E583 /* SaumurApp.swift */,
+				D46DD2442652652E0063E583 /* SaumurAppDelegate.swift */,
 				D46DD21A265264C40063E583 /* ContentView.swift */,
-				D46DD21C265264C40063E583 /* Assets.xcassets */,
 				D46DD221265264C40063E583 /* Info.plist */,
 				D46DD222265264C40063E583 /* Saumur.entitlements */,
+				D46DD25A2652F6640063E583 /* Assets.xcassets */,
 				D46DD21E265264C40063E583 /* Preview Content */,
 			);
 			path = Saumur;
@@ -132,6 +162,28 @@
 			path = SaumurUITests;
 			sourceTree = "<group>";
 		};
+		D46DD246265265590063E583 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD249265266430063E583 /* SpriteKit */,
+				D46DD247265265650063E583 /* Config.swift */,
+				D46DD258265267CA0063E583 /* Deque.swift */,
+				D46DD254265266F50063E583 /* GridPoint.swift */,
+				D46DD255265266F50063E583 /* Overload2D.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D46DD249265266430063E583 /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				D46DD24C265266430063E583 /* ArenaScene.swift */,
+				D46DD24B265266430063E583 /* SceneDispatch.swift */,
+				D46DD24E265266430063E583 /* SpritePool.swift */,
+			);
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,6 +191,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D46DD23B265264C50063E583 /* Build configuration list for PBXNativeTarget "Saumur" */;
 			buildPhases = (
+				D46DD2642653B6A60063E583 /* ShellScript */,
 				D46DD211265264C40063E583 /* Sources */,
 				D46DD212265264C40063E583 /* Frameworks */,
 				D46DD213265264C40063E583 /* Resources */,
@@ -235,8 +288,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46DD2622653B68D0063E583 /* .gitignore in Resources */,
+				D46DD2632653B68D0063E583 /* swiftlint.sh in Resources */,
+				D46DD25F2653B6760063E583 /* .swiftlint.yml in Resources */,
+				D46DD25E2653B6760063E583 /* .overcommit.yml in Resources */,
+				D46DD25B2652F6640063E583 /* Assets.xcassets in Resources */,
 				D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */,
-				D46DD21D265264C40063E583 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,13 +313,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D46DD2642653B6A60063E583 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/Users/rob/Projects/Saumur/swiftlint.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D46DD211265264C40063E583 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46DD2452652652E0063E583 /* SaumurAppDelegate.swift in Sources */,
+				D46DD259265267CA0063E583 /* Deque.swift in Sources */,
+				D46DD256265266F50063E583 /* GridPoint.swift in Sources */,
+				D46DD250265266430063E583 /* SceneDispatch.swift in Sources */,
+				D46DD251265266430063E583 /* ArenaScene.swift in Sources */,
+				D46DD248265265650063E583 /* Config.swift in Sources */,
 				D46DD21B265264C40063E583 /* ContentView.swift in Sources */,
 				D46DD219265264C40063E583 /* SaumurApp.swift in Sources */,
+				D46DD257265266F50063E583 /* Overload2D.swift in Sources */,
+				D46DD253265266430063E583 /* SpritePool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
