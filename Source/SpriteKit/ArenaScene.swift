@@ -68,6 +68,8 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         let p1 = SKPhysicsBody(circleOfRadius: box.size.width / 2)
 
         p1.isDynamic = true
+        p1.linearDamping = 2
+        p1.angularDamping = 1
 
         p1.categoryBitMask = 1
         p1.collisionBitMask = 3
@@ -108,6 +110,7 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         boundary.contactTestBitMask = 0
         boundary.categoryBitMask = 2
         boundary.collisionBitMask = 3
+        boundary.restitution = 0
 
         let boundaryNode = SKNode()
         boundaryNode.physicsBody = boundary
@@ -132,14 +135,14 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
     }
 
     func pulse(_ box: Int) {
-        let radius = CGFloat(3)// CGFloat.random(in: 5..<10)
+        let radius = CGFloat(15)// CGFloat.random(in: 5..<10)
         let theta = CGFloat.random(in: 0..<(2 * .pi))
 
         let sequence: SKAction
         if box % 2 == 0 {
             let p1 = SKAction.applyImpulse(CGVector(radius: radius, theta: theta), duration: 0.1)
-            let p3 = SKAction.applyForce(CGVector(radius: -0.75 * radius, theta: theta), duration: 1.25)
-            let p4 = SKAction.wait(forDuration: 1)
+            let p3 = SKAction.applyForce(CGVector(radius: -5 * radius, theta: theta), duration: 0.15)
+            let p4 = SKAction.wait(forDuration: 0.1)
 
             sequence = SKAction.sequence([p1, p3, p4])
         } else {
