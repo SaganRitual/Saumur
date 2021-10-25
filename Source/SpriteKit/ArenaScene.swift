@@ -23,29 +23,26 @@ struct Display {
     static var displayCycle: DisplayCycle = .idle
 }
 
+enum ActionStatus {
+    case none, running, finished
+}
+
 class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
-    let arkonsPool: SpritePool
-    let filledRectanglesPool: SpritePool
+    let dotsPool: SpritePool
     let linesPool: SpritePool
-    let nosesPool: SpritePool
-    let rectanglesPool: SpritePool
     let ringsPool: SpritePool
-    let teethPool: SpritePool
 
     let sceneDispatch = SceneDispatch()
 
     private var tickCount = 0
 
     var readyToRun = false
+    var actionStatus = ActionStatus.none
 
     override init(size: CGSize) {
-        self.arkonsPool = SpritePool("Arkons", "spark-thorax-large")
-        self.filledRectanglesPool = SpritePool("Markers", "rectangle-solid")
-        self.linesPool = SpritePool("Markers", "line")
-        self.nosesPool = SpritePool("Arkons", "diploid-nose")
-        self.rectanglesPool = SpritePool("Markers", "rectangle")
-        self.ringsPool = SpritePool("Markers", "circle-solid")
-        self.teethPool = SpritePool("Arkons", "spark-tooth-large")
+        self.dotsPool = SpritePool("Markers", "circle-solid")
+        self.linesPool = SpritePool("Markers", "rectangle")
+        self.ringsPool = SpritePool("Markers", "circle")
 
         super.init(size: size)
 
@@ -56,104 +53,68 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var boxes = [SKSpriteNode]()
+    var rings = [SKShapeNode]()
+    var drawingDots = [SKShapeNode]()
 
-    func makeBox(color: SKColor) {
-        let box = arenaScene.arkonsPool.makeSprite()
+    func makeRing(_ color: SKColor = .clear) {
+        let ring = SKShapeNode(circleOfRadius: 50)
+        ring.lineWidth = 5
+        ring.fillColor = .clear
+        ring.strokeColor = .white
 
-        box.size = CGSize(width: 25, height: 25)
-        box.color = color
-        box.colorBlendFactor = 1
+        let yRing = (ring.frame.size.height / 2) + (ring.lineWidth / 4)
+        let xRing = ((-size.width + ring.frame.size.width) / 2)
 
-        let p1 = SKPhysicsBody(circleOfRadius: box.size.width / 2)
+        ring.position = CGPoint(x: xRing, y: yRing)
 
-        p1.isDynamic = true
-        p1.linearDamping = 2
-        p1.angularDamping = 1
+        let dot = SKShapeNode(circleOfRadius: 5)
+        dot.lineWidth = 0
+        dot.fillColor = .red
+        dot.strokeColor = .clear
 
-        p1.categoryBitMask = 1
-        p1.collisionBitMask = 3
-        p1.contactTestBitMask = 1
+        let xDot = ((ring.frame.size.width - dot.frame.size.width) / 2) +
+                    (ring.lineWidth / 4)
 
-        self.addChild(box)
+        dot.position = CGPoint(x: xDot, y: 0)
 
-        let hw = size.width / 2
-        let hh = size.height / 2
-        box.position = CGPoint(x: CGFloat.random(in: -hw...hw), y: CGFloat.random(in: -hh...hh))
-        box.physicsBody = p1
+        self.addChild(ring)
+        ring.addChild(dot)
 
-        self.boxes.append(box)
+        rings.append(ring)
+        drawingDots.append(dot)
     }
 
     override func didMove(to view: SKView) {
         view.showsFPS = true
         view.showsNodeCount = true
-        view.showsPhysics = true
 
-        let halfSceneWidth = size.width / 2
-        let halfSceneHeight = size.height / 2
-
-        guard let scene = self.scene else {
-            preconditionFailure("This should never happen")
-        }
-
-        scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        scene.physicsWorld.contactDelegate = self
-
-        let boundary = SKPhysicsBody(edgeLoopFrom: CGRect(
-            x: -halfSceneWidth + 4, y: -halfSceneHeight + 2,
-            width: 0.75 * Config.sceneWidthPix,
-            height: 0.75 * Config.sceneWidthPix * Config.xScaleToSquare
-        ))
-
-        boundary.isDynamic = false
-        boundary.contactTestBitMask = 0
-        boundary.categoryBitMask = 2
-        boundary.collisionBitMask = 3
-        boundary.restitution = 0
-
-        let boundaryNode = SKNode()
-        boundaryNode.physicsBody = boundary
-        self.addChild(boundaryNode)
-
-//        let dragNode = SKFieldNode.dragField()
-//        dragNode.strength = 1
-//        self.addChild(dragNode)
-
-        makeBox(color: .green)
-//        makeBox(color: .orange)
-        startPulse()
+        makeRing()
+        pulse(0)
 
         backgroundColor = .black
         readyToRun = true
     }
 
     func startPulse() {
-        for box in boxes.indices {
+        for box in rings.indices {
             pulse(box)
         }
     }
 
     func pulse(_ box: Int) {
-        let radius = CGFloat(15)// CGFloat.random(in: 5..<10)
-        let theta = CGFloat.random(in: 0..<(2 * .pi))
+        let duration = CGFloat(10)
+        let rotate = SKAction.rotate(byAngle: -CGFloat.tau, duration: duration)
 
-        let sequence: SKAction
-        if box % 2 == 0 {
-            let p1 = SKAction.applyImpulse(CGVector(radius: radius, theta: theta), duration: 0.1)
-            let p3 = SKAction.applyForce(CGVector(radius: -5 * radius, theta: theta), duration: 0.15)
-            let p4 = SKAction.wait(forDuration: 0.1)
+        let distance = CGFloat.pi * 100
+        let vector = CGVector(dx: distance, dy: 0)
+        let traverse = SKAction.move(by: vector, duration: duration)
 
-            sequence = SKAction.sequence([p1, p3, p4])
-        } else {
-            let p1 = SKAction.applyImpulse(CGVector(radius: radius, theta: theta), duration: 0.5)
-            let p2 = SKAction.applyImpulse(CGVector(radius: -radius, theta: theta), duration: 0.1)
-            let p3 = SKAction.wait(forDuration: 1)
+        let startSprites = SKAction.run  { self.actionStatus = .running }
+        let groupAction = SKAction.group([rotate, traverse])
+        let wait = SKAction.wait(forDuration: 2.0)
+        let sequenceAction = SKAction.sequence([wait, startSprites, groupAction])
 
-            sequence = SKAction.sequence([p1, p2, p3])
-        }
-
-        boxes[box].run(sequence) { self.pulse(box) }
+        rings[box].run(sequenceAction) { self.actionStatus = .finished }
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -171,6 +132,25 @@ extension ArenaScene {
     override func didEvaluateActions() {
         defer { Display.displayCycle = .simulatingPhysics }
         Display.displayCycle = .didEvaluateActions
+
+        if actionStatus == .none { return }
+
+        let hue = Double(tickCount % 120) / 120
+        let color = NSColor(hue: hue, saturation: 0.5, brightness: 0.9, alpha: 1)
+
+        if tickCount % 2 == 0 {
+            let newPathDot = SKShapeNode(circleOfRadius: 5)
+            newPathDot.lineWidth = 1
+            newPathDot.fillColor = color
+            newPathDot.strokeColor = color
+
+            let arenaPosition = rings[0].convert(drawingDots[0].position, to: self)
+            newPathDot.position = arenaPosition
+
+            addChild(newPathDot)
+        }
+
+        if actionStatus == .finished { actionStatus = .none }
     }
 
     override func didFinishUpdate() {
