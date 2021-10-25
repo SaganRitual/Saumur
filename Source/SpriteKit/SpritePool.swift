@@ -5,10 +5,14 @@ class SpritePool {
     var parkedDrones: [SKSpriteNode]
     let texture: SKTexture
 
-    init(_ atlasName: String, _ textureName: String) {
+    init(_ atlasName: String, _ textureName: String, cPreallocate: Int = 0) {
         self.atlas = SKTextureAtlas(named: atlasName)
         self.texture = atlas.textureNamed(textureName)
         self.parkedDrones = []
+
+        for _ in 0..<cPreallocate {
+            parkedDrones.append(SKSpriteNode(texture: self.texture))
+        }
     }
 
     func makeSprite() -> SKSpriteNode {
@@ -39,6 +43,7 @@ private extension SpritePool {
         drone.colorBlendFactor = 1
         drone.zPosition = 1
         drone.zRotation = 0
+        drone.alpha = 1
         return drone
     }
 }
