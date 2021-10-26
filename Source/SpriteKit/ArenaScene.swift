@@ -33,9 +33,9 @@ enum Settings {
     static let ring0LineWidth: CGFloat = 3
     static let ring0Radius: CGFloat = 100
 
-    static let ring1DrawpointFraction: CGFloat = 1.3
+    static let ring1DrawpointFraction: CGFloat = 1.7
     static let ring1LineWidth: CGFloat = 3
-    static let ring1RadiusFraction: CGFloat = 0.15
+    static let ring1RadiusFraction: CGFloat = 0.5
 
     static let ring1Radius: CGFloat = ring1RadiusFraction * ring0Radius
 
@@ -80,16 +80,17 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         self.addChild(ring0)
     }
 
+    var path: CGPath!
+    var table1: SKShapeNode!
+
     func makeInnerRing() {
         ring1 = SKShapeNode(circleOfRadius: Settings.ring1Radius)
         ring1.lineWidth = Settings.ring1LineWidth
         ring1.fillColor = .clear
         ring1.strokeColor = .white
 
-        let yRing = 0.0
-        let xRing = (ring0.frame.size.width - ring1.frame.size.width) / 2
-
-        ring1.position = CGPoint(x: xRing, y: yRing)
+        let xxRing = (ring0.frame.size.width - ring1.frame.size.width) / 2
+        ring1.position = CGPoint(x: xxRing, y: 0)
 
         let wBar = ring1.frame.size.width - Settings.ring1LineWidth
 
@@ -107,9 +108,23 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         let dp = Settings.ring1DrawpointFraction * ring1.frame.size.width / 2
         dot.position = CGPoint(x: dp, y: 0)
 
-        self.addChild(ring1)
         ring1.addChild(bar)
         bar.addChild(dot)
+
+        let track1Radius = (ring0.frame.size.width - ring1.frame.size.width) / 2
+        let track1Diameter = track1Radius * 2
+        let track1Size = CGSize(width: track1Diameter, height: track1Diameter)
+
+        let xRing = -(ring0.frame.size.width - ring1.frame.size.width) / 2
+        let yRing = -(ring0.frame.size.height - ring1.frame.size.height) / 2
+        let track1Origin = CGPoint(x: xRing, y: yRing)
+
+        path = CGPath(ellipseIn: CGRect(origin: track1Origin, size: track1Size), transform: nil)
+        table1 = SKShapeNode(path: path)
+        table1.fillColor = .clear
+        table1.strokeColor = .clear
+        self.addChild(table1)
+        table1.addChild(ring1)
     }
 
     override func didMove(to view: SKView) {
@@ -122,29 +137,31 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         backgroundColor = .black
         readyToRun = true
 
-        pulse(0)
+        pulse()
     }
 
-    func pulse(_ box: Int) {
-        let duration = CGFloat(1 / Settings.speedHertz)
-        let rotate = SKAction.rotate(byAngle: -CGFloat.tau, duration: duration)
-        let rotateForever = SKAction.repeatForever(rotate)
+    func pulse() {
 
-        let size = ring0.frame.size - ring1.frame.size
-        let xRing = -(ring0.frame.size.width - ring1.frame.size.width) / 2
-        let yRing = -(ring0.frame.size.height - ring1.frame.size.height) / 2
-        let origin = CGPoint(x: xRing, y: yRing)
-        let path = CGPath(ellipseIn: CGRect(origin: origin, size: size), transform: nil)
-        let roll = SKAction.follow(path, asOffset: false, orientToPath: false, speed: (CGFloat.tau * bar.frame.width) / duration)
-        let rollForever = SKAction.repeatForever(roll)
+        let duration = CGFloat(1 / Settings.speedHertz)
+        let rotateTable1 = SKAction.rotate(byAngle: CGFloat.tau, duration: duration)
+        let rotateForeverTable1 = SKAction.repeatForever(rotateTable1)
+
+        let circumferenceRing0 = CGFloat.pi * ring0.frame.width
+        let circumferenceRing1 = CGFloat.pi * ring1.frame.width
+        let ring1Rotations = circumferenceRing0 / circumferenceRing1
+
+        let rotateRing1 = SKAction.rotate(byAngle: -CGFloat.tau * ring1Rotations, duration: duration)
+        let rotateForeverRing1 = SKAction.repeatForever(rotateRing1)
 
         let startSprites = SKAction.run { self.actionStatus = .running }
-        let groupAction = SKAction.group([rotateForever, rollForever])
-        let foreverAction = SKAction.repeatForever(groupAction)
-        let wait = SKAction.wait(forDuration: 0.5)
-        let sequenceAction = SKAction.sequence([wait, startSprites, foreverAction])
+        let wait = SKAction.wait(forDuration: 2)
+        let rotateForever = SKAction.run { [self] in
+            table1.run(rotateForeverTable1)
+            ring1.run(rotateForeverRing1)
+        }
 
-        ring1.run(sequenceAction)
+        let sequenceAction = SKAction.sequence([wait, startSprites, rotateForever])
+        self.run(sequenceAction)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -169,7 +186,7 @@ extension ArenaScene {
         let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
 
         let newPathDot = dotsPool.makeSprite()
-        newPathDot.size = CGSize(width: 20, height: 20)
+        newPathDot.size = CGSize(width: 10, height: 10)
         newPathDot.color = color
 
         let arenaPosition = ring1.convert(dot.position, to: self)
