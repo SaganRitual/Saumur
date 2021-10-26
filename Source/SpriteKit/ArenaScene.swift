@@ -86,10 +86,8 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         ring1.fillColor = .clear
         ring1.strokeColor = .white
 
-        let yRing = 0.0
         let xRing = (ring0.frame.size.width - ring1.frame.size.width) / 2
-
-        ring1.position = CGPoint(x: xRing, y: yRing)
+        ring1.position = CGPoint(x: xRing, y: 0)
 
         let wBar = ring1.frame.size.width - Settings.ring1LineWidth
 
@@ -130,18 +128,21 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         let rotate = SKAction.rotate(byAngle: -CGFloat.tau, duration: duration)
         let rotateForever = SKAction.repeatForever(rotate)
 
-        let size = ring0.frame.size - ring1.frame.size
+        let track1Radius = (ring0.frame.size.width - ring1.frame.size.width) / 2
+        let track1Diameter = track1Radius * 2
+        let track1Size = CGSize(width: track1Diameter, height: track1Diameter)
+
         let xRing = -(ring0.frame.size.width - ring1.frame.size.width) / 2
         let yRing = -(ring0.frame.size.height - ring1.frame.size.height) / 2
-        let origin = CGPoint(x: xRing, y: yRing)
-        let path = CGPath(ellipseIn: CGRect(origin: origin, size: size), transform: nil)
+        let track1Origin = CGPoint(x: xRing, y: yRing)
+
         let roll = SKAction.follow(path, asOffset: false, orientToPath: false, speed: (CGFloat.tau * bar.frame.width) / duration)
         let rollForever = SKAction.repeatForever(roll)
 
         let startSprites = SKAction.run { self.actionStatus = .running }
         let groupAction = SKAction.group([rotateForever, rollForever])
         let foreverAction = SKAction.repeatForever(groupAction)
-        let wait = SKAction.wait(forDuration: 0.5)
+        let wait = SKAction.wait(forDuration: 2)
         let sequenceAction = SKAction.sequence([wait, startSprites, foreverAction])
 
         ring1.run(sequenceAction)
@@ -162,27 +163,27 @@ extension ArenaScene {
     override func didEvaluateActions() {
         defer { Display.displayCycle = .simulatingPhysics }
         Display.displayCycle = .didEvaluateActions
-
-        if actionStatus == .none { return }
-
-        let hue = Double(tickCount % 600) / 600
-        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-
-        let newPathDot = dotsPool.makeSprite()
-        newPathDot.size = CGSize(width: 20, height: 20)
-        newPathDot.color = color
-
-        let arenaPosition = ring1.convert(dot.position, to: self)
-        newPathDot.position = arenaPosition
-
-        addChild(newPathDot)
-
-        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
-        newPathDot.run(fade) {
-            self.dotsPool.releaseSprite(newPathDot)
-        }
-
-        if actionStatus == .finished { actionStatus = .none }
+//
+//        if actionStatus == .none { return }
+//
+//        let hue = Double(tickCount % 600) / 600
+//        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
+//
+//        let newPathDot = dotsPool.makeSprite()
+//        newPathDot.size = CGSize(width: 20, height: 20)
+//        newPathDot.color = color
+//
+//        let arenaPosition = ring1.convert(dot.position, to: self)
+//        newPathDot.position = arenaPosition
+//
+//        addChild(newPathDot)
+//
+//        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
+//        newPathDot.run(fade) {
+//            self.dotsPool.releaseSprite(newPathDot)
+//        }
+//
+//        if actionStatus == .finished { actionStatus = .none }
     }
 
     override func didFinishUpdate() {
