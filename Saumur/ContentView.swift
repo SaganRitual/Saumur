@@ -1,11 +1,25 @@
 // We are a way for the cosmos to know itself. -- C. Sagan
 
+import SpriteKit
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var settings = Settings()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        HStack {
+            SettingsView(settings: settings)
+
+            SpriteView(scene:
+                ArenaScene(
+                    settings: settings,
+                    size: CGSize(width: arenaWidth, height: arenaHeight)
+                )
+            )
+            .padding(5)
+            .background(Color.yellow.opacity(0.85))
+            .frame(width: arenaWidth, height: arenaHeight)
+        }
     }
 }
 

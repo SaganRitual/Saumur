@@ -8,6 +8,6 @@ extension CGFloat {
 
 enum Config {
     static let aspectRatioOfRobsMacbookPro: CGFloat = 2880 / 1800
-    static let sceneWidthPix: CGFloat = 950
+    static let sceneWidthPix: CGFloat = 1000
     static let xScaleToSquare = 1 / aspectRatioOfRobsMacbookPro
 }

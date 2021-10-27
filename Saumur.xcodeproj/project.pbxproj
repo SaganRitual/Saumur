@@ -12,7 +12,6 @@
 		D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21F265264C40063E583 /* Preview Assets.xcassets */; };
 		D46DD22C265264C50063E583 /* SaumurTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD22B265264C50063E583 /* SaumurTests.swift */; };
 		D46DD237265264C50063E583 /* SaumurUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD236265264C50063E583 /* SaumurUITests.swift */; };
-		D46DD2452652652E0063E583 /* SaumurAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD2442652652E0063E583 /* SaumurAppDelegate.swift */; };
 		D46DD248265265650063E583 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD247265265650063E583 /* Config.swift */; };
 		D46DD250265266430063E583 /* SceneDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD24B265266430063E583 /* SceneDispatch.swift */; };
 		D46DD251265266430063E583 /* ArenaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD24C265266430063E583 /* ArenaScene.swift */; };
@@ -25,6 +24,8 @@
 		D46DD25F2653B6760063E583 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D46DD25D2653B6760063E583 /* .swiftlint.yml */; };
 		D46DD2622653B68D0063E583 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D46DD2602653B68D0063E583 /* .gitignore */; };
 		D46DD2632653B68D0063E583 /* swiftlint.sh in Resources */ = {isa = PBXBuildFile; fileRef = D46DD2612653B68D0063E583 /* swiftlint.sh */; };
+		D4C83A922728E9AA005FADDC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C83A912728E9AA005FADDC /* SettingsView.swift */; };
+		D4C83A9A272939A3005FADDC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C83A99272939A3005FADDC /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,6 @@
 		D46DD232265264C50063E583 /* SaumurUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaumurUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DD236265264C50063E583 /* SaumurUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurUITests.swift; sourceTree = "<group>"; };
 		D46DD238265264C50063E583 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D46DD2442652652E0063E583 /* SaumurAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurAppDelegate.swift; sourceTree = "<group>"; };
 		D46DD247265265650063E583 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D46DD24B265266430063E583 /* SceneDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDispatch.swift; sourceTree = "<group>"; };
 		D46DD24C265266430063E583 /* ArenaScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArenaScene.swift; sourceTree = "<group>"; };
@@ -70,6 +70,8 @@
 		D46DD25D2653B6760063E583 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D46DD2602653B68D0063E583 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D46DD2612653B68D0063E583 /* swiftlint.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
+		D4C83A912728E9AA005FADDC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D4C83A99272939A3005FADDC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +127,9 @@
 		D46DD217265264C40063E583 /* Saumur */ = {
 			isa = PBXGroup;
 			children = (
-				D46DD218265264C40063E583 /* SaumurApp.swift */,
-				D46DD2442652652E0063E583 /* SaumurAppDelegate.swift */,
 				D46DD21A265264C40063E583 /* ContentView.swift */,
+				D46DD218265264C40063E583 /* SaumurApp.swift */,
+				D4C83A912728E9AA005FADDC /* SettingsView.swift */,
 				D46DD221265264C40063E583 /* Info.plist */,
 				D46DD222265264C40063E583 /* Saumur.entitlements */,
 				D46DD25A2652F6640063E583 /* Assets.xcassets */,
@@ -170,6 +172,7 @@
 				D46DD258265267CA0063E583 /* Deque.swift */,
 				D46DD254265266F50063E583 /* GridPoint.swift */,
 				D46DD255265266F50063E583 /* Overload2D.swift */,
+				D4C83A99272939A3005FADDC /* Settings.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -338,15 +341,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D46DD2452652652E0063E583 /* SaumurAppDelegate.swift in Sources */,
 				D46DD259265267CA0063E583 /* Deque.swift in Sources */,
 				D46DD256265266F50063E583 /* GridPoint.swift in Sources */,
+				D4C83A922728E9AA005FADDC /* SettingsView.swift in Sources */,
 				D46DD250265266430063E583 /* SceneDispatch.swift in Sources */,
 				D46DD251265266430063E583 /* ArenaScene.swift in Sources */,
 				D46DD248265265650063E583 /* Config.swift in Sources */,
 				D46DD21B265264C40063E583 /* ContentView.swift in Sources */,
 				D46DD219265264C40063E583 /* SaumurApp.swift in Sources */,
 				D46DD257265266F50063E583 /* Overload2D.swift in Sources */,
+				D4C83A9A272939A3005FADDC /* Settings.swift in Sources */,
 				D46DD253265266430063E583 /* SpritePool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
