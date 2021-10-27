@@ -131,17 +131,11 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         view.showsFPS = true
         view.showsNodeCount = true
 
-        makeRing0()
-        makeInnerRing()
-
         backgroundColor = .black
         readyToRun = true
-
-        pulse()
     }
 
     func pulse() {
-
         let duration = CGFloat(1 / Settings.speedHertz)
         let rotateTable1 = SKAction.rotate(byAngle: CGFloat.tau, duration: duration)
         let rotateForeverTable1 = SKAction.repeatForever(rotateTable1)
