@@ -7,8 +7,9 @@ struct ContentView: View {
     @StateObject var settings = Settings()
 
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             SettingsView(settings: settings)
+                .frame(width: nil, height: arenaHeight, alignment: .top)
 
             SpriteView(scene:
                 ArenaScene(

@@ -11,19 +11,38 @@ struct SettingsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Stepper("Pen length: \(penLengthString)", value: $settings.penLengthFraction)
-                .padding(.top, 10)
+            ZoomSliderView(settings: settings)
+            .padding(.top, 10)
+            .padding([.leading, .trailing], 10)
 
-            Stepper("Rotation rate: \(rotationRateString)", value: $settings.rotationRateHertz)
+            Divider().background(Color.black).padding([.top, .bottom], -5)
+
+            Stepper("Pen: \(penLengthString)", value: $settings.penLengthFraction)
+
+            Divider().background(Color.black).padding([.top, .bottom], -5)
+
+            Stepper("Rotation: \(rotationRateString)", value: $settings.rotationRateHertz)
 
             ForEach(1..<2) { ringix in
-                DisclosureGroup("Ring \(ringix)") {
-                    Stepper("Ring1 radius: \(rotationRateString)", value: $settings.ring1RadiusFraction)
+                VStack {
+                    Divider().background(Color.black).padding(.bottom, -5)
+
+                    DisclosureGroup("Ring \(ringix)") {
+                        Stepper("Radius: \(rotationRateString)", value: $settings.ring1RadiusFraction)
+                    }
                 }
             }
+
+            Divider().background(Color.black).padding([.top, .bottom], -5)
         }
-        .padding([.bottom, .leading], 5)
-        .frame(width: 300)
+        .padding(10)
+        .frame(
+            minWidth: 300, idealWidth: 300, maxWidth: nil,
+            minHeight: nil, idealHeight: nil, maxHeight: .infinity,
+            alignment: .top
+        )
+        .border(Color.black)
+        .background(Color.yellow.opacity(0.5))
     }
 }
 
