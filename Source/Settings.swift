@@ -4,7 +4,7 @@ import SwiftUI
 
 class Settings: ObservableObject {
     @Published var penLengthFraction = 1.0
-    @Published var rotationRateHertz = 1.0
+    @Published var rotationRateHertz = 0.25
     @Published var ring1RadiusFraction = 1.0
     @Published var zoomLevel = 0.0
 
