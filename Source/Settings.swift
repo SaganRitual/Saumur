@@ -3,15 +3,11 @@
 import SwiftUI
 
 class Settings: ObservableObject {
-    @Published var penLengthFraction = Double(1.0)
-    @Published var rotationRateHertz = Double(1.0)
-    @Published var ring1RadiusFraction = Double(0.5)
-    @Published var zoomLevel = Double(1)
+    @Published var penLengthFraction = 1.0
+    @Published var rotationRateHertz = 1.0
+    @Published var ring1RadiusFraction = 1.0
+    @Published var zoomLevel = 0.0
 
     static let ringLineWidth = CGFloat(1)
     static let pathFadeDurationSeconds = CGFloat(20)
-//
-//    static let ring1DrawpointFraction: CGFloat = 1.7
-//
-//    static let speedHertz: CGFloat = 1
 }

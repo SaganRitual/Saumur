@@ -42,8 +42,9 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
     var pen: SKShapeNode!
     var dot: SKShapeNode!
-    var ring1: SKShapeNode!
+    var path1: CGMutablePath!
     var ring0: SKShapeNode!
+    var ring1: SKShapeNode!
 
     init(settings: Settings, size: CGSize) {
         self.dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 10000)
@@ -70,11 +71,51 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
     }
 
     func makeRing1() {
-        ring1 = SKShapeNode(circleOfRadius: ring0.frame.width / 2)
+        ring1 = SKShapeNode(circleOfRadius: 0.25 * radiusOf(ring: ring0))
         ring1.lineWidth = Settings.ringLineWidth
         ring1.fillColor = .clear
         ring1.strokeColor = .white
 
+        let xRing1 = radiusOf(ring: ring0) - radiusOf(ring: ring1)
+        let yRing1 = 0.0
+        ring1.position = CGPoint(x: xRing1, y: yRing1)
+        self.addChild(ring1)
+
+        let path1Frame = CGRect(origin: CGPoint(x: -xRing1, y: -xRing1), size: CGSize(width: xRing1 * 2, height: xRing1 * 2))
+
+        path1 = CGMutablePath(ellipseIn: path1Frame, transform: nil)
+
+        let rotationHz = 0.25
+        let follow = SKAction.follow(path1, asOffset: false, orientToPath: false, duration: 1 / rotationHz)
+        let followForever = SKAction.repeatForever(follow)
+        let ratio = radiusOf(ring: ring0) / radiusOf(ring: ring1)
+        let spin = SKAction.rotate(byAngle: -.tau, duration: 1 / (ratio * rotationHz))
+        let spinForever = SKAction.repeatForever(spin)
+        let setStatus = SKAction.run { self.actionStatus = .running }
+        let group = SKAction.group([followForever, spinForever])
+        let sequence = SKAction.sequence([setStatus, group])
+        ring1.run(sequence)
+
+        pen = SKShapeNode(rect: CGRect(origin: .zero, size: CGSize(width: radiusOf(ring: ring1), height: 1)))
+        pen.strokeColor = .white
+        pen.fillColor = .white
+        pen.position = .zero
+        ring1.addChild(pen)
+
+        dot = SKShapeNode(circleOfRadius: 1)
+        dot.lineWidth = 0
+        dot.fillColor = .red
+        dot.strokeColor = .clear
+        dot.zPosition = 2
+        dot.position.x = radiusOf(ring: ring1)
+        pen.addChild(dot)
+//
+//        let debug1 = SKShapeNode(path: path1)
+//        debug1.lineWidth = Settings.ringLineWidth
+//        debug1.fillColor = .clear
+//        debug1.strokeColor = .green
+//        debug1.position = .zero
+//        self.addChild(debug1)
     }
 
     func makeInnerRing() {
@@ -131,6 +172,10 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
         makeRing1()
 
         readyToRun = true
+    }
+
+    func radiusOf(ring: SKShapeNode) -> CGFloat {
+        ring.frame.size.width / 2
     }
 
     override func update(_ currentTime: TimeInterval) {
