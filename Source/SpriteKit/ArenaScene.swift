@@ -172,12 +172,13 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
         nRing0!.shapeNode.addChild(nRing1!.shapeNode)
 
-//        let fullExtension = (nRing1!.shapeNode.frame.width + nRing1!.penNode!.frame.width) / 2
-//        nRing0!.shapeNode.setScale(nRing1!.trackPath!.boundingBox.size.width / 2 / fullExtension)
+        let fullExtension = (nRing1!.trackPath!.boundingBox.size.width + nRing1!.penNode!.frame.width) / 2
+        if fullExtension / (nRing0!.shapeNode.frame.size.width / 2) > 1.0 {
+            nRing0!.shapeNode.setScale(0.95 * (nRing1!.trackPath!.boundingBox.size.width / fullExtension) / 2)
+        }
 
         readyToRun = true
 
-//        let sizeRatio = nRing1!.shapeNode.frame.width / nRing0!.shapeNode.frame.size.width
         let spin1 = SKAction.rotate(byAngle: -.tau, duration: nRing1!.radiusFraction / settings.rotationRateHertz)
         let spinF1rever = SKAction.repeatForever(spin1)
 

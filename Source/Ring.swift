@@ -41,13 +41,15 @@ class Ring {
         let trackRect = CGRect(origin: CGPoint(x: -trackRadius, y: -trackRadius), size: trackPathFrameSize)
         trackPath = CGMutablePath(ellipseIn: trackRect, transform: nil)
 
-        let trackNode = SKShapeNode(circleOfRadius: trackRadius)
-        trackNode.lineWidth = Settings.ringLineWidth
-        trackNode.fillColor = .clear
-        trackNode.strokeColor = .blue
-        trackNode.position = .zero
+        #if DEBUG
+        let trackNodeOnlyForDebug = SKShapeNode(circleOfRadius: trackRadius)
+        trackNodeOnlyForDebug.lineWidth = Settings.ringLineWidth
+        trackNodeOnlyForDebug.fillColor = .clear
+        trackNodeOnlyForDebug.strokeColor = .clear
+        trackNodeOnlyForDebug.position = .zero
 
-        scene.nRing0!.shapeNode.addChild(trackNode)
+        scene.nRing0!.shapeNode.addChild(trackNodeOnlyForDebug)
+        #endif
 
         guard isTopRing else { penNode = nil; return }
 
