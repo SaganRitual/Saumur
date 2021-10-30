@@ -2,6 +2,7 @@
 
 import SpriteKit
 import SwiftUI
+import Combine
 
 enum DisplayCycle: Int {
     case updateStarted, didFinishUpdate
@@ -28,8 +29,8 @@ enum ActionStatus {
     case none, running, finished
 }
 
-class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
-    @ObservedObject var settings: Settings
+class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, ObservableObject {
+    var settings: Settings
 
     let dotsPool: SpritePool
 
@@ -45,19 +46,24 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
     var path1: CGPath!
     var ring0: SKSpriteNode!
     var ring1: SKSpriteNode!
-
     var ring0Radius = 0.0
     var ring1Radius = 0.0
 
     var theta0 = 0.0
-
+    var rotationRateHertz = 0.0
+    private var cancellables = Set<AnyCancellable>()
     init(settings: Settings, size: CGSize) {
-        self.dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 10000)
         self.settings = settings
-
+        self.dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 10000)
         super.init(size: size)
-
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        settings.$rotationRateHertz.sink(receiveCompletion: { _ in
+        }, receiveValue: { value in
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.rotationRateHertz = value
+            }
+        }).store(in: &cancellables)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -106,10 +112,10 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
         path1 = CGPath(ellipseIn: path1Frame, transform: nil)
 
-        let follow = SKAction.follow(path1, asOffset: false, orientToPath: false, duration: 1 / settings.rotationRateHertz)
+        let follow = SKAction.follow(path1, asOffset: false, orientToPath: false, duration: 1 / rotationRateHertz)
         let followForever = SKAction.repeatForever(follow)
         let ratio = ring0Radius / ring1Radius
-        let spin = SKAction.rotate(byAngle: -.tau, duration: 1 / (ratio * settings.rotationRateHertz))
+        let spin = SKAction.rotate(byAngle: -.tau, duration: 1 / (ratio * rotationRateHertz))
         let spinForever = SKAction.repeatForever(spin)
         let setStatus = SKAction.run { self.actionStatus = .running }
         let group = SKAction.group([followForever, spinForever])
@@ -193,7 +199,7 @@ extension ArenaScene {
         let hue = Double(tickCount % 600) / 600
         let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
 
-        theta0 = (theta0 + .tau * settings.rotationRateHertz / 60).truncatingRemainder(dividingBy: .tau)
+        theta0 = (theta0 + .tau * rotationRateHertz / 60).truncatingRemainder(dividingBy: .tau)
 
         let easyDot = dotsPool.makeSprite()
         easyDot.size = CGSize(width: 5, height: 5)
@@ -213,7 +219,7 @@ extension ArenaScene {
 
         easyDot.position = pen.convert(penp, to: ring0)
 
-        let theta1 = (.pi - theta0 * ring1Radius / ring0Radius * settings.rotationRateHertz).truncatingRemainder(dividingBy: .tau)
+        let theta1 = (.pi - theta0 * ring1Radius / ring0Radius * rotationRateHertz).truncatingRemainder(dividingBy: .tau)
         let xPen = ring1Radius * cos(theta1)
         let yPen = ring1Radius * sin(theta1)
         let pPen = CGPoint(x: xPen, y: yPen)

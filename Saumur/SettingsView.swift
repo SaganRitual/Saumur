@@ -3,32 +3,28 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var settings: Settings
-
-    var penLengthString: String { String(format: "%.3f", settings.penLengthFraction) }
-    var ring1RadiusString: String { String(format: "%.3f", settings.ring1RadiusFraction) }
-    var rotationRateString: String { String(format: "%.3f", settings.rotationRateHertz) }
+    @EnvironmentObject var settings: Settings
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            ZoomSliderView(settings: settings)
+            ZoomSliderView()
             .padding(.top, 10)
             .padding([.leading, .trailing], 10)
 
             Divider().background(Color.black).padding([.top, .bottom], -5)
 
-            Stepper("Pen: \(penLengthString)", value: $settings.penLengthFraction)
+            Stepper("Pen: \(settings.penLengthFraction.asPropertyDisplayText)", value: $settings.penLengthFraction)
 
             Divider().background(Color.black).padding([.top, .bottom], -5)
 
-            Stepper("Rotation: \(rotationRateString)", value: $settings.rotationRateHertz)
+            Stepper("Rotation: \(settings.rotationRateHertz.asPropertyDisplayText)", value: $settings.rotationRateHertz)
 
             ForEach(1..<2) { ringix in
                 VStack {
                     Divider().background(Color.black).padding(.bottom, -5)
 
                     DisclosureGroup("Ring \(ringix)") {
-                        Stepper("Radius: \(rotationRateString)", value: $settings.ring1RadiusFraction)
+                        Stepper("Radius: \(settings.ring1RadiusFraction.asPropertyDisplayText)", value: $settings.ring1RadiusFraction)
                     }
                 }
             }
@@ -47,9 +43,9 @@ struct SettingsView: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
-    @StateObject static var settings = Settings()
+    @StateObject var settings = Settings()
 
     static var previews: some View {
-        SettingsView(settings: settings)
+        SettingsView()
     }
 }

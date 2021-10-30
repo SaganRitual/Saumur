@@ -4,18 +4,14 @@ import SpriteKit
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var settings = Settings()
-
+    @EnvironmentObject var settings: Settings
     var body: some View {
         HStack(alignment: .top) {
-            SettingsView(settings: settings)
+            SettingsView()
                 .frame(width: nil, height: arenaHeight, alignment: .top)
 
             SpriteView(scene:
-                ArenaScene(
-                    settings: settings,
-                    size: CGSize(width: arenaWidth, height: arenaHeight)
-                )
+                        ArenaScene(settings: settings, size: CGSize(width: arenaWidth, height: arenaHeight))
             )
             .padding(5)
             .background(Color.yellow.opacity(0.85))

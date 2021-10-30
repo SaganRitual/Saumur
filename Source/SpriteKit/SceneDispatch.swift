@@ -7,7 +7,7 @@ import SpriteKit
 class SceneDispatch {
     private let lockQueue = DispatchQueue(
         label: "ak.scene.q",
-        target: DispatchQueue.global()
+        target: DispatchQueue.global(qos: .userInitiated)
     )
 
     struct WorkItem {

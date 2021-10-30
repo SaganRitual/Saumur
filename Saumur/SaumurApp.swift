@@ -9,9 +9,10 @@ var arenaScene: ArenaScene!
 
 @main
 struct SaumurApp: App {
+    @StateObject var settings = Settings()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(settings)
         }
     }
 }

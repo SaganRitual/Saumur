@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct ZoomSliderView: View {
-    @ObservedObject var settings: Settings
+    @EnvironmentObject var settings: Settings
     @State var isEditing = false
 
     var body: some View {
@@ -24,9 +24,8 @@ struct ZoomSliderView: View {
 }
 
 struct ZoomSliderView_Previews: PreviewProvider {
-    @StateObject static var settings = Settings()
 
     static var previews: some View {
-        ZoomSliderView(settings: settings)
+        ZoomSliderView()
     }
 }
