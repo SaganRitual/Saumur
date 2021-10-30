@@ -172,13 +172,13 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
         nRing0!.shapeNode.addChild(nRing1!.shapeNode)
 
-        let fullExtension = (nRing1!.shapeNode.frame.width + nRing1!.penNode!.frame.width) / 2
-        nRing0!.shapeNode.setScale(nRing1!.trackPath!.boundingBox.size.width / 2 / fullExtension)
+//        let fullExtension = (nRing1!.shapeNode.frame.width + nRing1!.penNode!.frame.width) / 2
+//        nRing0!.shapeNode.setScale(nRing1!.trackPath!.boundingBox.size.width / 2 / fullExtension)
 
         readyToRun = true
 
-        let sizeRatio = nRing1!.shapeNode.frame.width / nRing0!.shapeNode.frame.size.width
-        let spin1 = SKAction.rotate(byAngle: -.tau / sizeRatio, duration: 1 / settings.rotationRateHertz)
+//        let sizeRatio = nRing1!.shapeNode.frame.width / nRing0!.shapeNode.frame.size.width
+        let spin1 = SKAction.rotate(byAngle: -.tau, duration: nRing1!.radiusFraction / settings.rotationRateHertz)
         let spinF1rever = SKAction.repeatForever(spin1)
 
         let roll1 = SKAction.follow(nRing1!.trackPath!, asOffset: false, orientToPath: false, duration: 1 / settings.rotationRateHertz)
@@ -202,7 +202,17 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         defer { Display.displayCycle = .evaluatingActions }
         Display.displayCycle = .updateStarted
+
         guard readyToRun else { return }
+
+        // We used to be able to set these flags in didMove(to: View), but
+        // after I upgraded to Monterey, they didn't show up in the view any
+        // more. Might not be because of Monterey, but atm I don't give a shit,
+        // I just wanted to verify that everything isn't broken all to hell.
+        if view!.showsFPS == false {
+            view!.showsFPS = true
+            view!.showsNodeCount = true
+        }
 
         sceneDispatch.tick(tickCount)
 
