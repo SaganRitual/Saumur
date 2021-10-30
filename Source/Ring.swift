@@ -48,7 +48,7 @@ class Ring {
         trackNodeOnlyForDebug.strokeColor = .clear
         trackNodeOnlyForDebug.position = .zero
 
-        scene.nRing0!.shapeNode.addChild(trackNodeOnlyForDebug)
+        scene.rings[0].shapeNode.addChild(trackNodeOnlyForDebug)
         #endif
 
         guard isTopRing else { penNode = nil; return }

@@ -2,14 +2,6 @@
 
 import Foundation
 
-extension CGFloat {
-    static let tau = 2 * CGFloat.pi
-}
-
-extension Double {
-    static let tau = 2 * Double.pi
-}
-
 enum Config {
     static let aspectRatioOfRobsMacbookPro: CGFloat = 2880 / 1800
     static let sceneWidthPix: CGFloat = 1000
