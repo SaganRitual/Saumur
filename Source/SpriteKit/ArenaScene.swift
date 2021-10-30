@@ -51,6 +51,9 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
     var theta0 = 0.0
 
+    var nRing0: Ring?
+    var nRing1: Ring?
+
     init(settings: Settings, size: CGSize) {
         self.dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 10000)
         self.settings = settings
@@ -157,11 +160,35 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate {
 
         backgroundColor = .black
 
-        makeRing0()
-        makeRing1()
+        nRing0 = Ring(scene: self)
+        self.addChild(nRing0!.shapeNode)
 
-        track1Radius = ring0Radius - ring1Radius
+        nRing1 = Ring(
+            scene: self,
+            parentRadius: nRing0!.shapeNode.frame.size.width / 2,
+            radiusFraction: settings.ring1RadiusFraction,
+            isTopRing: true
+        )
+
+        nRing0!.shapeNode.addChild(nRing1!.shapeNode)
+
+        let fullExtension = (nRing1!.shapeNode.frame.width + nRing1!.penNode!.frame.width) / 2
+        nRing0!.shapeNode.setScale(nRing1!.trackPath!.boundingBox.size.width / 2 / fullExtension)
+
         readyToRun = true
+
+        let sizeRatio = nRing1!.shapeNode.frame.width / nRing0!.shapeNode.frame.size.width
+        let spin1 = SKAction.rotate(byAngle: -.tau / sizeRatio, duration: 1 / settings.rotationRateHertz)
+        let spinF1rever = SKAction.repeatForever(spin1)
+
+        let roll1 = SKAction.follow(nRing1!.trackPath!, asOffset: false, orientToPath: false, duration: 1 / settings.rotationRateHertz)
+        let rollF1rever = SKAction.repeatForever(roll1)
+
+        let group = SKAction.group([spinF1rever, rollF1rever])
+
+        let setStatus = SKAction.run { self.actionStatus = .running }
+        let sequence = SKAction.sequence([setStatus, group])
+        nRing1!.shapeNode.run(sequence)
     }
 
     func radiusOf(ring: SKShapeNode) -> CGFloat {
@@ -193,48 +220,19 @@ extension ArenaScene {
         let hue = Double(tickCount % 600) / 600
         let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
 
-        theta0 = (theta0 + .tau * settings.rotationRateHertz / 60).truncatingRemainder(dividingBy: .tau)
-
         let easyDot = dotsPool.makeSprite()
         easyDot.size = CGSize(width: 5, height: 5)
-        easyDot.color = .clear
+        easyDot.color = color
         easyDot.alpha = 0.85
 
-        let hardDot = dotsPool.makeSprite()
-        hardDot.size = CGSize(width: 10, height: 10)
-        hardDot.color = color
-
-//        let wtf1Radius = abs(radiusOf(ring: ring0) - radiusOf(ring: ring1))
-//        print("wtf1Radius = \(wtf1Radius) = \(radiusOf(ring: ring0)) - \(radiusOf(ring: ring1))")
-
-        let penx = pen.frame.width
-        let peny = 0.0
-        let penp = CGPoint(x: penx, y: peny)
-
-        easyDot.position = pen.convert(penp, to: ring0)
-
-        let theta1 = (.pi - theta0 * ring1Radius / ring0Radius * settings.rotationRateHertz).truncatingRemainder(dividingBy: .tau)
-        let xPen = ring1Radius * cos(theta1)
-        let yPen = ring1Radius * sin(theta1)
-        let pPen = CGPoint(x: xPen, y: yPen)
-
-        hardDot.position = ring1.convert(pPen, to: ring0)
-//
-//        let penToRing1 = pen.convert(pPen, to: ring1)
-//        let ring1ToArena = ring1.convert(pRing1 + penToRing1, to: self)
-//        newPathDot.position = ring1ToArena
-
-//        print("t = \(theta0), pRing0 = \(pRing0), r0 \(radiusOf(ring: ring0)) r1 \(radiusOf(ring: ring1)), track1 \(pRing0.x / cos(theta0)) \(pRing0.y / sin(theta0))")
-
-        ring0.addChild(easyDot)
-        ring0.addChild(hardDot)
+        let p = CGPoint(x: nRing1!.penNode!.frame.size.width, y: 0)
+        easyDot.position = nRing1!.penNode!.convert(p, to: nRing0!.shapeNode)
+        nRing0!.shapeNode.addChild(easyDot)
 
         let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
-        hardDot.run(fade) {
-            self.dotsPool.releaseSprite(hardDot)
+        easyDot.run(fade) {
+            self.dotsPool.releaseSprite(easyDot)
         }
-
-//        actionStatus = .finished
 
         if actionStatus == .finished { actionStatus = .none }
     }
