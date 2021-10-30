@@ -4,7 +4,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var settings: Settings
-
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             ZoomSliderView()

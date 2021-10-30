@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B81F2312272D0D39004A3355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81F2311272D0D39004A3355 /* Extensions.swift */; };
+		B864C7C3272D40A50004745A /* ClampValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B864C7C2272D40A50004745A /* ClampValue.swift */; };
 		D46DD219265264C40063E583 /* SaumurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD218265264C40063E583 /* SaumurApp.swift */; };
 		D46DD21B265264C40063E583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD21A265264C40063E583 /* ContentView.swift */; };
 		D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21F265264C40063E583 /* Preview Assets.xcassets */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		B81F2311272D0D39004A3355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B864C7C2272D40A50004745A /* ClampValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampValue.swift; sourceTree = "<group>"; };
 		D46DD215265264C40063E583 /* Saumur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saumur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DD218265264C40063E583 /* SaumurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurApp.swift; sourceTree = "<group>"; };
 		D46DD21A265264C40063E583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				D46DD255265266F50063E583 /* Overload2D.swift */,
 				D4C83A99272939A3005FADDC /* Settings.swift */,
 				B81F2311272D0D39004A3355 /* Extensions.swift */,
+				B864C7C2272D40A50004745A /* ClampValue.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				D46DD250265266430063E583 /* SceneDispatch.swift in Sources */,
 				D46DD251265266430063E583 /* ArenaScene.swift in Sources */,
 				D46DD248265265650063E583 /* Config.swift in Sources */,
+				B864C7C3272D40A50004745A /* ClampValue.swift in Sources */,
 				D46DD21B265264C40063E583 /* ContentView.swift in Sources */,
 				D46DD219265264C40063E583 /* SaumurApp.swift in Sources */,
 				D46DD257265266F50063E583 /* Overload2D.swift in Sources */,
