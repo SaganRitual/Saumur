@@ -5,10 +5,13 @@ import SwiftUI
 
 class Settings: ObservableObject {
     @ClampValue(initValue: 1.00, min: 0, max: 5) var simulationSpeed: Double
-    @ClampValue(initValue: 0.75, min: 0, max: 10) var penLengthFraction: Double
+    @ClampValue(initValue: 0.9, min: 0, max: 10) var penLengthFraction: Double
     @ClampValue(initValue: 0.25, min: 0, max: 1000) var rotationRateHertz: Double
 
     @Published var ringRadiiFractions = [1.0, 0.8, 0.6]
+    @Published var showPen = false
+    @Published var showRings = false
+    @Published var showTracks = false
     @Published var zoomLevel = 0.0
 
     static let ringLineWidth = CGFloat(0.1)
