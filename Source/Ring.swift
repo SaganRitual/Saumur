@@ -5,6 +5,7 @@ import SwiftUI
 
 class Ring {
     let penNode: SKShapeNode?
+    let radius: CGFloat
     let radiusFraction: Double
     let shapeNode: SKShapeNode
     let trackPath: CGMutablePath?
@@ -18,17 +19,17 @@ class Ring {
         shapeNode.position = CGPoint.zero
 
         penNode = nil
+        radius = scene.radiusOf(ring: shapeNode)
         radiusFraction = 1
         trackPath = nil
     }
 
-    init(
-        scene: ArenaScene, parentRadius: Double,
-        radiusFraction: Double, isTopRing: Bool = false
-    ) {
-        self.radiusFraction = radiusFraction
+    init(scene: ArenaScene, ringIndex: Int) {
+        let parentRadius = scene.shapeNodeRadius(ring: ringIndex - 1)
 
-        let radius = parentRadius * radiusFraction
+        self.radiusFraction = scene.settings.ringRadiiFractions[ringIndex]
+        self.radius = parentRadius * self.radiusFraction
+
         let trackRadius = parentRadius * (1 - radiusFraction)
 
         shapeNode = SKShapeNode(circleOfRadius: radius)
@@ -45,16 +46,17 @@ class Ring {
         let trackNodeOnlyForDebug = SKShapeNode(circleOfRadius: trackRadius)
         trackNodeOnlyForDebug.lineWidth = Settings.ringLineWidth
         trackNodeOnlyForDebug.fillColor = .clear
-        trackNodeOnlyForDebug.strokeColor = .clear
+        trackNodeOnlyForDebug.strokeColor = .blue
         trackNodeOnlyForDebug.position = .zero
 
-        scene.rings[0].shapeNode.addChild(trackNodeOnlyForDebug)
+        scene.ringShapes[ringIndex - 1].addChild(trackNodeOnlyForDebug)
         #endif
 
-        guard isTopRing else { penNode = nil; return }
+        if ringIndex < scene.ringShapes.count - 1 { penNode = nil; return }
 
         var penPoints: [CGPoint] = [
-            .zero, CGPoint(x: scene.settings.penLengthFraction * radius, y: 0)
+            .zero,
+            CGPoint(x: +scene.settings.penLengthFraction * radius, y: 0)
         ]
 
         penNode = SKShapeNode(points: &penPoints, count: 2)

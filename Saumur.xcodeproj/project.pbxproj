@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B81F2312272D0D39004A3355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81F2311272D0D39004A3355 /* Extensions.swift */; };
 		B864C7C3272D40A50004745A /* ClampValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B864C7C2272D40A50004745A /* ClampValue.swift */; };
+		D456FCD5272ED4D500932773 /* DrawRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D456FCD4272ED4D500932773 /* DrawRing.swift */; };
 		D46DD219265264C40063E583 /* SaumurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD218265264C40063E583 /* SaumurApp.swift */; };
 		D46DD21B265264C40063E583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD21A265264C40063E583 /* ContentView.swift */; };
 		D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21F265264C40063E583 /* Preview Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		B81F2311272D0D39004A3355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B864C7C2272D40A50004745A /* ClampValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampValue.swift; sourceTree = "<group>"; };
+		D456FCD4272ED4D500932773 /* DrawRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRing.swift; sourceTree = "<group>"; };
 		D46DD215265264C40063E583 /* Saumur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saumur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DD218265264C40063E583 /* SaumurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurApp.swift; sourceTree = "<group>"; };
 		D46DD21A265264C40063E583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				D46DD24C265266430063E583 /* ArenaScene.swift */,
 				D46DD24B265266430063E583 /* SceneDispatch.swift */,
 				D46DD24E265266430063E583 /* SpritePool.swift */,
+				D456FCD4272ED4D500932773 /* DrawRing.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				D46DD250265266430063E583 /* SceneDispatch.swift in Sources */,
 				D46DD251265266430063E583 /* ArenaScene.swift in Sources */,
 				D46DD248265265650063E583 /* Config.swift in Sources */,
+				D456FCD5272ED4D500932773 /* DrawRing.swift in Sources */,
 				B864C7C3272D40A50004745A /* ClampValue.swift in Sources */,
 				D46DD21B265264C40063E583 /* ContentView.swift in Sources */,
 				D4AB8733272D19EF00537D44 /* Ring.swift in Sources */,
