@@ -156,8 +156,10 @@ enum DrawRing {
         let penNode = SKShapeNode(points: &penPoints, count: 2)
         penNode.lineWidth = Settings.ringLineWidth
         penNode.fillColor = .green
-        penNode.strokeColor = scene.settings.showPen ? .red : .black
+        penNode.strokeColor = .red
         penNode.position = .zero
+
+        penNode.alpha = scene.settings.showPen ? 1 : 0
 
         ring2.addChild(penNode)
 
