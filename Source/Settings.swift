@@ -9,9 +9,10 @@ class Settings: ObservableObject {
     @ClampValue(initValue: 0.25, min: 0, max: 1000) var rotationRateHertz: Double
 
     @Published var ringRadiiFractions = [1.0, 0.8, 0.6]
-    @Published var showPen = false
-    @Published var showRings = false
-    @Published var showTracks = false
+    @Published var ringColors: [NSColor] = [.cyan, .magenta, .yellow]
+    @Published var showPen = true
+    @Published var showRings = true
+    @Published var showTracks = true
     @Published var zoomLevel = 0.0
 
     static let ringLineWidth = CGFloat(0.1)

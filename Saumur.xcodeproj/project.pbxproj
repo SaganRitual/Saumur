@@ -10,6 +10,7 @@
 		B81F2312272D0D39004A3355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81F2311272D0D39004A3355 /* Extensions.swift */; };
 		B864C7C3272D40A50004745A /* ClampValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B864C7C2272D40A50004745A /* ClampValue.swift */; };
 		D456FCD5272ED4D500932773 /* DrawRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D456FCD4272ED4D500932773 /* DrawRing.swift */; };
+		D456FCD7272F45A000932773 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D456FCD6272F45A000932773 /* Layer.swift */; };
 		D46DD219265264C40063E583 /* SaumurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD218265264C40063E583 /* SaumurApp.swift */; };
 		D46DD21B265264C40063E583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46DD21A265264C40063E583 /* ContentView.swift */; };
 		D46DD220265264C40063E583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46DD21F265264C40063E583 /* Preview Assets.xcassets */; };
@@ -27,7 +28,7 @@
 		D46DD25F2653B6760063E583 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D46DD25D2653B6760063E583 /* .swiftlint.yml */; };
 		D46DD2622653B68D0063E583 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D46DD2602653B68D0063E583 /* .gitignore */; };
 		D46DD2632653B68D0063E583 /* swiftlint.sh in Resources */ = {isa = PBXBuildFile; fileRef = D46DD2612653B68D0063E583 /* swiftlint.sh */; };
-		D4AB8733272D19EF00537D44 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB8732272D19EF00537D44 /* Ring.swift */; };
+		D4AB8733272D19EF00537D44 /* OldRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB8732272D19EF00537D44 /* OldRing.swift */; };
 		D4C83A922728E9AA005FADDC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C83A912728E9AA005FADDC /* SettingsView.swift */; };
 		D4C83A9A272939A3005FADDC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C83A99272939A3005FADDC /* Settings.swift */; };
 		D4C83A9C272A3B0C005FADDC /* ZoomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C83A9B272A3B0C005FADDC /* ZoomSliderView.swift */; };
@@ -54,6 +55,7 @@
 		B81F2311272D0D39004A3355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B864C7C2272D40A50004745A /* ClampValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClampValue.swift; sourceTree = "<group>"; };
 		D456FCD4272ED4D500932773 /* DrawRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRing.swift; sourceTree = "<group>"; };
+		D456FCD6272F45A000932773 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		D46DD215265264C40063E583 /* Saumur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saumur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46DD218265264C40063E583 /* SaumurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurApp.swift; sourceTree = "<group>"; };
 		D46DD21A265264C40063E583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		D46DD25D2653B6760063E583 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D46DD2602653B68D0063E583 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D46DD2612653B68D0063E583 /* swiftlint.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
-		D4AB8732272D19EF00537D44 /* Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
+		D4AB8732272D19EF00537D44 /* OldRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRing.swift; sourceTree = "<group>"; };
 		D4C83A912728E9AA005FADDC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D4C83A99272939A3005FADDC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D4C83A9B272A3B0C005FADDC /* ZoomSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomSliderView.swift; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 				D46DD258265267CA0063E583 /* Deque.swift */,
 				D46DD254265266F50063E583 /* GridPoint.swift */,
 				D46DD255265266F50063E583 /* Overload2D.swift */,
-				D4AB8732272D19EF00537D44 /* Ring.swift */,
+				D4AB8732272D19EF00537D44 /* OldRing.swift */,
 				D4C83A99272939A3005FADDC /* Settings.swift */,
 				B81F2311272D0D39004A3355 /* Extensions.swift */,
 				B864C7C2272D40A50004745A /* ClampValue.swift */,
@@ -195,9 +197,10 @@
 			isa = PBXGroup;
 			children = (
 				D46DD24C265266430063E583 /* ArenaScene.swift */,
+				D456FCD4272ED4D500932773 /* DrawRing.swift */,
+				D456FCD6272F45A000932773 /* Layer.swift */,
 				D46DD24B265266430063E583 /* SceneDispatch.swift */,
 				D46DD24E265266430063E583 /* SpritePool.swift */,
-				D456FCD4272ED4D500932773 /* DrawRing.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -360,13 +363,14 @@
 				B81F2312272D0D39004A3355 /* Extensions.swift in Sources */,
 				D46DD256265266F50063E583 /* GridPoint.swift in Sources */,
 				D4C83A922728E9AA005FADDC /* SettingsView.swift in Sources */,
+				D456FCD7272F45A000932773 /* Layer.swift in Sources */,
 				D46DD250265266430063E583 /* SceneDispatch.swift in Sources */,
 				D46DD251265266430063E583 /* ArenaScene.swift in Sources */,
 				D46DD248265265650063E583 /* Config.swift in Sources */,
 				D456FCD5272ED4D500932773 /* DrawRing.swift in Sources */,
 				B864C7C3272D40A50004745A /* ClampValue.swift in Sources */,
 				D46DD21B265264C40063E583 /* ContentView.swift in Sources */,
-				D4AB8733272D19EF00537D44 /* Ring.swift in Sources */,
+				D4AB8733272D19EF00537D44 /* OldRing.swift in Sources */,
 				D46DD219265264C40063E583 /* SaumurApp.swift in Sources */,
 				D46DD257265266F50063E583 /* Overload2D.swift in Sources */,
 				D4C83A9A272939A3005FADDC /* Settings.swift in Sources */,

@@ -31,8 +31,8 @@ enum ActionStatus {
 
 class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, ObservableObject {
     var settings: Settings
-
     let dotsPool: SpritePool
+    var layers = [Layer]()
 
     let sceneDispatch = SceneDispatch()
 
@@ -42,8 +42,6 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
     var actionStatus = ActionStatus.none
 
     var theta0 = 0.0
-
-//    var rings = [SKShapeNode]()
     var topRingIx: Int { ringShapes.count - 1 }
 
     private var cancellables = Set<AnyCancellable>()
@@ -61,7 +59,7 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 //        }).store(in: &cancellables)
 
     }
-
+// 1:37, 5:14, 7:40 Brat
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -76,30 +74,28 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 
         backgroundColor = .black
 
-        DrawRing.drawRing0(scene: self)
+        let bottomLayer = BottomLayer(scene: self)
 
-        let track0 = DrawRing.drawTrack0(scene: self, ring0: DrawRing.ringShapes[0])
-        let ring1 = DrawRing.drawRing1(scene: self, ring0: DrawRing.ringShapes[0])
+        let layer1 = InnerLayer(
+            parentLayer: bottomLayer, settings: settings, layerIndex: 1
+        )
 
-        DrawRing.startRing1(settings: settings, track0: track0, ring1: ring1)
+        _ = InnerLayer(
+            parentLayer: layer1, settings: settings, layerIndex: 2
+        )
 
-        let track1 = DrawRing.drawTrack1(scene: self, ring1: DrawRing.ringShapes[1])
-        let ring2 = DrawRing.drawRing2(scene: self, ring1: DrawRing.ringShapes[1])
-
-        DrawRing.startRing2(settings: settings, track1: track1, ring2: ring2)
-
-        DrawRing.drawPen(scene: self, ring2: ring2)
+//        DrawRing.drawPen(scene: self, ring2: ring2)
 
 //        let fullExtension = trackPathRadius(ring: topRingIx) + penLength() / 2
 //        if fullExtension / shapeNodeRadius(ring: 0) > 1.0 {
 //            rings[0].shapeNode.setScale(0.95 * trackPathRadius(ring: topRingIx) / fullExtension)
 //        }
 
-        let startPen = SKAction.run {
-            self.actionStatus = .running
-        }
+//        let startPen = SKAction.run {
+//            self.actionStatus = .running
+//        }
 
-        DrawRing.penShape.run(startPen)
+//        DrawRing.penShape.run(startPen)
 
         readyToRun = true
     }

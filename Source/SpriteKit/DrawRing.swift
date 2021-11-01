@@ -21,24 +21,12 @@ enum DrawRing {
 
         let L0 = SKShapeNode(points: &p0, count: 2)
         let C0 = SKShapeNode(circleOfRadius: 10)
-        L0.strokeColor = color; L0.fillColor = color
+        L0.strokeColor = color; L0.fillColor =  color
         C0.strokeColor = color; C0.fillColor = .clear
         r0.addChild(L0)
         r0.addChild(C0)
 
         scene.addChild(r0)
-    }
-
-    static func drawTrack0(scene: ArenaScene, ring0: SKShapeNode) -> SKShapeNode {
-        let color: SKColor = scene.settings.showRings ? .blue : .clear
-
-        let track0Radius = ring0.frame.width / 2 * (1 - scene.settings.ringRadiiFractions[1])
-        let track0 = SKShapeNode(circleOfRadius: track0Radius)
-        track0.fillColor = .clear; track0.strokeColor = color; track0.zPosition = 5
-        track0.position = .zero
-
-        ring0.addChild(track0)
-        return track0
     }
 
     static func drawRing1(scene: ArenaScene, ring0: SKShapeNode) -> SKShapeNode {

@@ -3,7 +3,7 @@
 import SpriteKit
 import SwiftUI
 
-class Ring {
+class OldRing {
     let penNode: SKShapeNode?
     let radius: CGFloat
     let radiusFraction: Double
