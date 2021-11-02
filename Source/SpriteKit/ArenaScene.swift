@@ -78,11 +78,13 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 
         let base = Spinner(settings: settings, scene: self)
         let spinner1 = Spinner(settings: settings, parentSpinner: base, layerIndex: 1)
-//        let spinner2 = Spinner(settings: settings, parentSpinner: spinner1, layerIndex: 2)
+        let spinner2 = Spinner(settings: settings, parentSpinner: spinner1, layerIndex: 2)
+        let spinner3 = Spinner(settings: settings, parentSpinner: spinner2, layerIndex: 3)
 
         spinners.append(base)
         spinners.append(spinner1)
-//        spinners.append(spinner2)
+        spinners.append(spinner2)
+        spinners.append(spinner3)
 
         readyToRun = true
 
@@ -121,20 +123,23 @@ extension ArenaScene {
         let hue = Double(tickCount % 600) / 600
         let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
 
-        let easyDot = dotsPool.makeSprite()
-        easyDot.size = CGSize(width: 5, height: 5)
-        easyDot.color = color
-        easyDot.alpha = 0.85
+        for ix in 1..<spinners.count {
+            let easyDot = dotsPool.makeSprite()
+            easyDot.size = CGSize(width: 5, height: 5)
+            easyDot.color = color
+            easyDot.alpha = 0.85
 
-        let penTip = spinners[1].penTip!
-        let dotPosition = spinners[1].penShape.convert(penTip.position, to: self)
+            let penTip = spinners[ix].penTip!
+            let dotPosition = spinners[ix].penShape.convert(penTip.position, to: self)
 
-        easyDot.position = dotPosition
-        self.addChild(easyDot)
+            easyDot.position = dotPosition
+            self.addChild(easyDot)
 
-        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
-        easyDot.run(fade) {
-            self.dotsPool.releaseSprite(easyDot)
+            let pathFadeDurationSeconds = Settings.pathFadeDurationSeconds * self.speed
+            let fade = SKAction.fadeOut(withDuration: pathFadeDurationSeconds)
+            easyDot.run(fade) {
+                self.dotsPool.releaseSprite(easyDot)
+            }
         }
 
         if actionStatus == .finished { actionStatus = .none }

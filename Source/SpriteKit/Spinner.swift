@@ -53,6 +53,7 @@ class Spinner {
         compensator = SKShapeNode(rect: rCompensator)
         compensator.position = CGPoint(x: spacerLength, y: 0)
         compensator.fillColor = .clear
+        compensator.strokeColor = .clear
 
         spacerShape.addChild(compensator)
 
@@ -63,7 +64,8 @@ class Spinner {
 
         compensator.addChild(ringShape)
 
-        let penFraction = Spinner.radiusFraction(settings: settings, layerIndex: layerIndex)
+//        let penFraction = Spinner.radiusFraction(settings: settings, layerIndex: layerIndex)
+        let penFraction = settings.penLengthFraction
         let penLength = ringRadius * penFraction
 
         var pPen: [CGPoint] = [CGPoint(x: 0, y: 0), CGPoint(x: penLength, y: 0)]
@@ -73,7 +75,7 @@ class Spinner {
 
         compensator.addChild(penShape)
 
-        penTip = SKShapeNode(circleOfRadius: 10)
+        penTip = SKShapeNode(circleOfRadius: 2)
         penTip.position = CGPoint(x: penLength, y: 0)
         penTip.strokeColor = .red
 
