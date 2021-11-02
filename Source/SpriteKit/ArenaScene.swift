@@ -57,13 +57,16 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
         self.dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 10000)
         super.init(size: size)
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        settings.$rotationRateHertz.sink(receiveCompletion: { _ in
-        }, receiveValue: { value in
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.rotationRateHertz = value
-            }
-        }).store(in: &cancellables)
-
+        self.rotationRateHertz = settings.rotationRateHertz
+        // observe values received by the publisher
+        settings.$rotationRateHertz
+            .receive(on: RunLoop.main) // receive on main queue
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { value in
+                DispatchQueue.global(qos: .userInitiated).sync { // dispatch received value to our current rendering queue
+                    self.rotationRateHertz = value
+                }
+            }).store(in: &cancellables)
     }
 
     required init?(coder aDecoder: NSCoder) {

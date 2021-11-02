@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 
+/// A convenient property wrapper to clamp value
 @propertyWrapper
 class ClampValue<T: Comparable>: ObservableObject {
     private let min: T
@@ -20,11 +21,11 @@ class ClampValue<T: Comparable>: ObservableObject {
             subject.send(value)
         }
     }
-    init(initValue: T, min: T, max: T) {
+    init(wrappedValue: T, min: T, max: T) {
         self.min = min
         self.max = max
-        self.value = initValue
-        self.wrappedValue = initValue
+        self.value = wrappedValue
+        self.wrappedValue = wrappedValue
     }
     private lazy var subject = CurrentValueSubject<T, Error>(wrappedValue)
     var projectedValue: AnyPublisher<T, Error> {

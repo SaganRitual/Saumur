@@ -18,16 +18,35 @@ struct SettingsView: View {
 
             Stepper("Rotation: \(settings.rotationRateHertz.asPropertyDisplayText)", value: $settings.rotationRateHertz)
 
-            ForEach(1..<2) { ringix in
-                VStack {
-                    Divider().background(Color.black).padding(.bottom, -5)
-
-                    DisclosureGroup("Ring \(ringix)") {
-                        Stepper("Radius: \(settings.ring1RadiusFraction.asPropertyDisplayText)", value: $settings.ring1RadiusFraction)
+            List {
+                ForEach(settings.rings.identifiableIndices) { index in
+                    if (index != settings.rings.count - 1) { // avoid crash on last element deleting [swiftui bug]
+                        VStack {
+                            ScrollView {
+                                Divider().background(Color.black).padding(.bottom, -5)
+                                DisclosureGroup(isExpanded: $settings.rings[index].expandable) {
+                                    Stepper("Radius: \(settings.rings[index].radiusFraction.asPropertyDisplayText)", value: $settings.rings[index].radiusFraction)
+                                } label: {
+                                    Text("Ring \(index)")
+                                }
+                            }
+                        }
                     }
+                }.onDelete { indexSet in
+                    settings.rings.remove(atOffsets: indexSet)
                 }
             }
-
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    settings.rings.append(Ring(radiusFraction: 1.0))
+                } label: {
+                    Image(systemName: "plus")
+                        .frame(width: 44, height: 44)
+                }.frame(width: 100, height: 60, alignment: .center)
+                Spacer()
+            }.frame(height: 44)
             Divider().background(Color.black).padding([.top, .bottom], -5)
         }
         .padding(10)
