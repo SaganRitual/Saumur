@@ -3,9 +3,11 @@
 import SpriteKit
 
 class Spinner {
+    let spacerShape: SKShapeNode!
     let compensator: SKShapeNode
+    let penShape: SKShapeNode!
+    let penTip: SKShapeNode!
     let ringShape: SKShapeNode!
-    let vectorShape: SKShapeNode!
 
     init(settings: Settings, scene: ArenaScene) {
         let rawSceneRadius = scene.frame.size.width / 2
@@ -20,62 +22,86 @@ class Spinner {
         let rCompensator = CGRect(origin: oCompensator, size: sCompensator)
         compensator = SKShapeNode(rect: rCompensator)
 
-        let pCompensator = CGPoint.zero
-        compensator.position = pCompensator
-
+        compensator.position = .zero
         compensator.fillColor = .orange
         compensator.strokeColor = .yellow
 
         scene.addChild(compensator)
         compensator.addChild(ringShape)
 
-        vectorShape = nil
+        spacerShape = nil
+        penShape = nil
+        penTip = nil
     }
 
+    // swiftlint:disable function_body_length
     init(settings: Settings, parentSpinner: Spinner, layerIndex: Int) {
-        let parentRingRadius = parentSpinner.ringShape.frame.size.width / 2
+        let spacerFraction = Spinner.radiusFraction(settings: settings, layerIndex: layerIndex)
+        let spacerLength = spacerFraction * parentSpinner.ringRadius()
 
-        let vectorLength = parentRingRadius * settings.ringRadiiFractions[layerIndex]
-        let ringRadius = parentRingRadius * (1 - settings.ringRadiiFractions[layerIndex])
+        var pSpacer: [CGPoint] = [CGPoint(x: 0, y: 0), CGPoint(x: spacerLength, y: 0)]
 
-        ringShape = SKShapeNode(circleOfRadius: ringRadius)
-        ringShape.fillColor = .clear
-        ringShape.strokeColor = settings.ringColors[layerIndex]
+        spacerShape = SKShapeNode(points: &pSpacer, count: 2)
+        spacerShape.strokeColor = settings.ringColors[layerIndex]
 
-        var pVector: [CGPoint] = [CGPoint(x: 0, y: 0), CGPoint(x: vectorLength, y: 0)]
-
-        vectorShape = SKShapeNode(points: &pVector, count: 2)
-        vectorShape.strokeColor = settings.ringColors[layerIndex]
-
-        var pDebugMarker: [CGPoint] = [CGPoint(x: -vectorLength / 2, y: 0), CGPoint(x: vectorLength / 2, y: 0)]
-        let debugMarker = SKShapeNode(points: &pDebugMarker, count: 2)
-        debugMarker.strokeColor = settings.ringColors[layerIndex]
-        debugMarker.zRotation += .tau / 4
-        ringShape.addChild(debugMarker)
+        parentSpinner.ringShape.addChild(spacerShape)
 
         let sCompensator = CGSize(width: 10, height: 10)
         let oCompensator = CGPoint(x: -5, y: -5)
         let rCompensator = CGRect(origin: oCompensator, size: sCompensator)
 
         compensator = SKShapeNode(rect: rCompensator)
-        compensator.position = CGPoint(x: vectorLength, y: 0)
+        compensator.position = CGPoint(x: spacerLength, y: 0)
         compensator.fillColor = .clear
 
-        parentSpinner.ringShape.addChild(vectorShape)
-        vectorShape.addChild(compensator)
+        spacerShape.addChild(compensator)
+
+        let ringRadius = parentSpinner.ringRadius() - spacerLength
+        ringShape = SKShapeNode(circleOfRadius: ringRadius)
+        ringShape.fillColor = .clear
+        ringShape.strokeColor = settings.ringColors[layerIndex]
+
         compensator.addChild(ringShape)
 
-        let direction = Double.tau * ((layerIndex % 2 == 0) ? -1.0 : 1.0)
-        let cycleDuration = settings.ringRadiiFractions[layerIndex] / settings.rotationRateHertz
+        let penFraction = Spinner.radiusFraction(settings: settings, layerIndex: layerIndex)
+        let penLength = ringRadius * penFraction
 
-        let spinAction = SKAction.rotate(byAngle: direction, duration: cycleDuration)
+        var pPen: [CGPoint] = [CGPoint(x: 0, y: 0), CGPoint(x: penLength, y: 0)]
+        penShape = SKShapeNode(points: &pPen, count: 2)
+        penShape.strokeColor = settings.ringColors[layerIndex]
+        penShape.zRotation += .tau / 4
+
+        compensator.addChild(penShape)
+
+        penTip = SKShapeNode(circleOfRadius: 10)
+        penTip.position = CGPoint(x: penLength, y: 0)
+        penTip.strokeColor = .red
+
+        penShape.addChild(penTip)
+
+        let direction = Double.tau * ((layerIndex % 2 == 0) ? -1.0 : 1.0)
+        let ringCycleDuration = 1 / settings.rotationRateHertz
+        let penCycleDuration = ringCycleDuration * (ringRadius / parentSpinner.ringRadius())
+
+        let penSpinAction = SKAction.rotate(byAngle: -direction, duration: penCycleDuration)
+        let penSpinForever = SKAction.repeatForever(penSpinAction)
+
+        let spinAction = SKAction.rotate(byAngle: direction, duration: ringCycleDuration)
         let spinForever = SKAction.repeatForever(spinAction)
 
-        let compensateAction = SKAction.rotate(byAngle: -direction, duration: cycleDuration)
+        let compensateAction = SKAction.rotate(byAngle: -direction, duration: ringCycleDuration)
         let compensateForever = SKAction.repeatForever(compensateAction)
 
         compensator.run(compensateForever)
-        debugMarker.run(compensateForever)
-        vectorShape.run(spinForever)
+        penShape.run(penSpinForever)
+        spacerShape.run(spinForever)
     }
+}
+
+private extension Spinner {
+    static func radiusFraction(settings: Settings, layerIndex: Int) -> Double {
+        settings.ringRadiiFractions[layerIndex]
+    }
+
+    func ringRadius() -> CGFloat { ringShape.frame.size.width / 2 }
 }

@@ -66,6 +66,8 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 
     var ringShapes = [SKShapeNode]()
 
+    var spinners = [Spinner]()
+
     override func didMove(to view: SKView) {
         self.speed = settings.simulationSpeed
 
@@ -75,33 +77,17 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
         backgroundColor = .black
 
         let base = Spinner(settings: settings, scene: self)
-        let layer1 = Spinner(settings: settings, parentSpinner: base, layerIndex: 1)
-        _ = Spinner(settings: settings, parentSpinner: layer1, layerIndex: 2)
+        let spinner1 = Spinner(settings: settings, parentSpinner: base, layerIndex: 1)
+//        let spinner2 = Spinner(settings: settings, parentSpinner: spinner1, layerIndex: 2)
 
-//        let bottomLayer = BottomLayer(scene: self)
-//
-//        let layer1 = InnerLayer(
-//            parentLayer: bottomLayer, settings: settings, layerIndex: 1
-//        )
-//
-//        _ = InnerLayer(
-//            parentLayer: layer1, settings: settings, layerIndex: 2
-//        )
+        spinners.append(base)
+        spinners.append(spinner1)
+//        spinners.append(spinner2)
 
-//        DrawRing.drawPen(scene: self, ring2: ring2)
+        readyToRun = true
 
-//        let fullExtension = trackPathRadius(ring: topRingIx) + penLength() / 2
-//        if fullExtension / shapeNodeRadius(ring: 0) > 1.0 {
-//            rings[0].shapeNode.setScale(0.95 * trackPathRadius(ring: topRingIx) / fullExtension)
-//        }
-
-//        let startPen = SKAction.run {
-//            self.actionStatus = .running
-//        }
-
-//        DrawRing.penShape.run(startPen)
-
-//        readyToRun = true
+        let startActions = SKAction.run { self.actionStatus = .running }
+        self.run(startActions)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -132,21 +118,24 @@ extension ArenaScene {
 
         if actionStatus == .none { return }
 
-//        let hue = Double(tickCount % 600) / 600
-//        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-//
-//        let easyDot = dotsPool.makeSprite()
-//        easyDot.size = CGSize(width: 5, height: 5)
-//        easyDot.color = color
-//        easyDot.alpha = 0.85
-//
-//        easyDot.position = penAbsolutePosition()
-//        self.addChild(easyDot)
-//
-//        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
-//        easyDot.run(fade) {
-//            self.dotsPool.releaseSprite(easyDot)
-//        }
+        let hue = Double(tickCount % 600) / 600
+        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
+
+        let easyDot = dotsPool.makeSprite()
+        easyDot.size = CGSize(width: 5, height: 5)
+        easyDot.color = color
+        easyDot.alpha = 0.85
+
+        let penTip = spinners[1].penTip!
+        let dotPosition = spinners[1].penShape.convert(penTip.position, to: self)
+
+        easyDot.position = dotPosition
+        self.addChild(easyDot)
+
+        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
+        easyDot.run(fade) {
+            self.dotsPool.releaseSprite(easyDot)
+        }
 
         if actionStatus == .finished { actionStatus = .none }
     }
