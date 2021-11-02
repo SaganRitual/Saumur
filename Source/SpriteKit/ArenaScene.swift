@@ -32,7 +32,6 @@ enum ActionStatus {
 class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, ObservableObject {
     var settings: Settings
     let dotsPool: SpritePool
-    var layers = [Layer]()
 
     let sceneDispatch = SceneDispatch()
 
@@ -59,7 +58,8 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 //        }).store(in: &cancellables)
 
     }
-// 1:37, 5:14, 7:40 Brat
+    // Schwamova 1:30 B♭+D, 5:14-5:26, 5:34, Similar but not quite at 7:25, 7:36, even closer at 7:40
+    // 1:40 D+A♭, 4:08, 5:12, 7:12-7:21, 7:52-8:00 k448
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -74,15 +74,19 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 
         backgroundColor = .black
 
-        let bottomLayer = BottomLayer(scene: self)
+        let base = Spinner(settings: settings, scene: self)
+        let layer1 = Spinner(settings: settings, parentSpinner: base, layerIndex: 1)
+        _ = Spinner(settings: settings, parentSpinner: layer1, layerIndex: 2)
 
-        let layer1 = InnerLayer(
-            parentLayer: bottomLayer, settings: settings, layerIndex: 1
-        )
-
-        _ = InnerLayer(
-            parentLayer: layer1, settings: settings, layerIndex: 2
-        )
+//        let bottomLayer = BottomLayer(scene: self)
+//
+//        let layer1 = InnerLayer(
+//            parentLayer: bottomLayer, settings: settings, layerIndex: 1
+//        )
+//
+//        _ = InnerLayer(
+//            parentLayer: layer1, settings: settings, layerIndex: 2
+//        )
 
 //        DrawRing.drawPen(scene: self, ring2: ring2)
 
@@ -97,7 +101,7 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
 
 //        DrawRing.penShape.run(startPen)
 
-        readyToRun = true
+//        readyToRun = true
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -128,21 +132,21 @@ extension ArenaScene {
 
         if actionStatus == .none { return }
 
-        let hue = Double(tickCount % 600) / 600
-        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-
-        let easyDot = dotsPool.makeSprite()
-        easyDot.size = CGSize(width: 5, height: 5)
-        easyDot.color = color
-        easyDot.alpha = 0.85
-
-        easyDot.position = penAbsolutePosition()
-        self.addChild(easyDot)
-
-        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
-        easyDot.run(fade) {
-            self.dotsPool.releaseSprite(easyDot)
-        }
+//        let hue = Double(tickCount % 600) / 600
+//        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
+//
+//        let easyDot = dotsPool.makeSprite()
+//        easyDot.size = CGSize(width: 5, height: 5)
+//        easyDot.color = color
+//        easyDot.alpha = 0.85
+//
+//        easyDot.position = penAbsolutePosition()
+//        self.addChild(easyDot)
+//
+//        let fade = SKAction.fadeOut(withDuration: Settings.pathFadeDurationSeconds)
+//        easyDot.run(fade) {
+//            self.dotsPool.releaseSprite(easyDot)
+//        }
 
         if actionStatus == .finished { actionStatus = .none }
     }
@@ -159,14 +163,14 @@ extension ArenaScene {
 }
 
 extension ArenaScene {
-    func penLength() -> CGFloat {
-        return DrawRing.penShape!.frame.size.width
-    }
-
-    func penAbsolutePosition() -> CGPoint {
-        let p = CGPoint(x: penLength(), y: 0)
-        return DrawRing.penShape!.convert(p, to: DrawRing.ringShapes[0])
-    }
+//    func penLength() -> CGFloat {
+//        return DrawRing.penShape!.frame.size.width
+//    }
+//
+//    func penAbsolutePosition() -> CGPoint {
+//        let p = CGPoint(x: penLength(), y: 0)
+//        return DrawRing.penShape!.convert(p, to: DrawRing.ringShapes[0])
+//    }
 
     func radiusOf(ring: SKShapeNode) -> CGFloat {
         ring.frame.size.width / 2.0
