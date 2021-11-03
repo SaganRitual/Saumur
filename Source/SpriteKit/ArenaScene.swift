@@ -123,7 +123,7 @@ extension ArenaScene {
         let hue = Double(tickCount % 600) / 600
 
         for ix in 1..<spinners.count {
-            let adjustedHue = (spinners[ix].inkHue  + hue).truncatingRemainder(dividingBy: 1)
+            let adjustedHue = (spinners[ix].inkHue + hue).truncatingRemainder(dividingBy: 1)
             let color = NSColor(hue: adjustedHue, saturation: 1, brightness: 1, alpha: 1)
 
             let easyDot = dotsPool.makeSprite()

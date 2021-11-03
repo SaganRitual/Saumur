@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-struct CheckBoxView: View {
+struct VisibilityControlView: View {
     @Binding var checked: Bool
 
     let label: String
@@ -26,7 +26,7 @@ struct CheckBoxView_Previews: PreviewProvider {
         @State var checked = false
 
         var body: some View {
-            CheckBoxView(checked: $checked, label: "Hogwarts")
+            VisibilityControlView(checked: $checked, label: "Hogwarts")
         }
     }
 

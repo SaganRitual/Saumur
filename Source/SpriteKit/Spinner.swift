@@ -79,7 +79,7 @@ class Spinner {
 
         penTip = SKShapeNode(circleOfRadius: 2)
         penTip.position = CGPoint(x: penLength, y: 0)
-        penTip.strokeColor = .red
+        penTip.strokeColor = .clear
 
         penShape.addChild(penTip)
 

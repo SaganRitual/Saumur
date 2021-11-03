@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct LayerControlView: View {
+    @EnvironmentObject var settings: Settings
+
     @State var joint = true
     @State var pen = true
     @State var penTip = true
@@ -11,8 +13,6 @@ struct LayerControlView: View {
 
     var body: some View {
         ZStack {
-            Color(NSColor.underPageBackgroundColor)
-
             VStack {
                 Text("Layer")
                     .font(.title)
@@ -25,17 +25,19 @@ struct LayerControlView: View {
                             .foregroundColor(Color(NSColor.windowFrameTextColor))
                             .padding(.bottom, 25)
 
-                        CheckBoxView(checked: $joint, label: "Joints")
-                        CheckBoxView(checked: $pen, label: "Pen")
-                        CheckBoxView(checked: $penTip, label: "Pen tip")
-                        CheckBoxView(checked: $ring, label: "Ring")
-                        CheckBoxView(checked: $spacer, label: "Spacer")
+                        VisibilityControlView(checked: $joint, label: "Joints")
+                        VisibilityControlView(checked: $pen, label: "Pen")
+                        VisibilityControlView(checked: $penTip, label: "Pen tip")
+                        VisibilityControlView(checked: $ring, label: "Ring")
+                        VisibilityControlView(checked: $spacer, label: "Spacer")
                     }
 
                     VStack {
                         Text("Size")
                             .font(.title)
                             .foregroundColor(Color(NSColor.windowFrameTextColor))
+
+                        SizeControlView()
                     }
 
                     VStack {
@@ -53,6 +55,6 @@ struct LayerControlView: View {
 
 struct LayerControlView_Previews: PreviewProvider {
     static var previews: some View {
-        LayerControlView()
+        LayerControlView().environmentObject(Settings())
     }
 }

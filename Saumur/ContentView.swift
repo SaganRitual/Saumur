@@ -5,6 +5,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var settings: Settings
+    
     var body: some View {
         HStack(alignment: .top) {
             SettingsView()
@@ -14,7 +15,6 @@ struct ContentView: View {
                         ArenaScene(settings: settings, size: CGSize(width: arenaWidth, height: arenaHeight))
             )
             .padding(5)
-            .background(Color.yellow.opacity(0.85))
             .frame(width: arenaWidth, height: arenaHeight)
         }
     }
@@ -23,5 +23,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Settings())
     }
 }

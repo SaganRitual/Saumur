@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4C241CF2732BB3300497077 /* SizeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C241CE2732BB3300497077 /* SizeControlView.swift */; };
 		D4C467CE273228C3008F3033 /* SaumurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C467CD273228C3008F3033 /* SaumurApp.swift */; };
 		D4C467D0273228C3008F3033 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C467CF273228C3008F3033 /* ContentView.swift */; };
 		D4C467D2273228C5008F3033 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4C467D1273228C5008F3033 /* Assets.xcassets */; };
@@ -33,7 +34,7 @@
 		D4C4681C27325CBD008F3033 /* LayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4681B27325CBD008F3033 /* LayerControlView.swift */; };
 		D4C4681E27325CC8008F3033 /* ZoomSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4681D27325CC8008F3033 /* ZoomSliderView.swift */; };
 		D4C4682027326673008F3033 /* PlaybackControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4681F27326673008F3033 /* PlaybackControlsView.swift */; };
-		D4C46824273270A4008F3033 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C46823273270A4008F3033 /* CheckboxView.swift */; };
+		D4C46824273270A4008F3033 /* VisibilityControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C46823273270A4008F3033 /* VisibilityControlView.swift */; };
 		D4C4682627327C04008F3033 /* TriangleFormulae.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C4682527327C04008F3033 /* TriangleFormulae.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D4C241CE2732BB3300497077 /* SizeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeControlView.swift; sourceTree = "<group>"; };
 		D4C467CA273228C3008F3033 /* Saumur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saumur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C467CD273228C3008F3033 /* SaumurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaumurApp.swift; sourceTree = "<group>"; };
 		D4C467CF273228C3008F3033 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		D4C4681B27325CBD008F3033 /* LayerControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerControlView.swift; sourceTree = "<group>"; };
 		D4C4681D27325CC8008F3033 /* ZoomSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomSliderView.swift; sourceTree = "<group>"; };
 		D4C4681F27326673008F3033 /* PlaybackControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlsView.swift; sourceTree = "<group>"; };
-		D4C46823273270A4008F3033 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		D4C46823273270A4008F3033 /* VisibilityControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityControlView.swift; sourceTree = "<group>"; };
 		D4C4682527327C04008F3033 /* TriangleFormulae.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleFormulae.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4C241D02733045400497077 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4C4681B27325CBD008F3033 /* LayerControlView.swift */,
+				D4C4681F27326673008F3033 /* PlaybackControlsView.swift */,
+				D4C4681927325C9F008F3033 /* SettingsView.swift */,
+				D4C241CE2732BB3300497077 /* SizeControlView.swift */,
+				D4C46823273270A4008F3033 /* VisibilityControlView.swift */,
+				D4C4681D27325CC8008F3033 /* ZoomSliderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D4C467C1273228C3008F3033 = {
 			isa = PBXGroup;
 			children = (
@@ -144,13 +159,8 @@
 		D4C467CC273228C3008F3033 /* Saumur */ = {
 			isa = PBXGroup;
 			children = (
-				D4C46823273270A4008F3033 /* CheckboxView.swift */,
 				D4C467CF273228C3008F3033 /* ContentView.swift */,
-				D4C4681B27325CBD008F3033 /* LayerControlView.swift */,
-				D4C4681F27326673008F3033 /* PlaybackControlsView.swift */,
 				D4C467CD273228C3008F3033 /* SaumurApp.swift */,
-				D4C4681927325C9F008F3033 /* SettingsView.swift */,
-				D4C4681D27325CC8008F3033 /* ZoomSliderView.swift */,
 				D4C467D1273228C5008F3033 /* Assets.xcassets */,
 				D4C467D6273228C5008F3033 /* Saumur.entitlements */,
 				D4C467D3273228C5008F3033 /* Preview Content */,
@@ -188,6 +198,7 @@
 			children = (
 				D4C4680127322994008F3033 /* NutsBolts */,
 				D4C46802273229A0008F3033 /* SpriteKit */,
+				D4C241D02733045400497077 /* Views */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -357,10 +368,11 @@
 				D4C4682627327C04008F3033 /* TriangleFormulae.swift in Sources */,
 				D4C467D0273228C3008F3033 /* ContentView.swift in Sources */,
 				D4C46814273229ED008F3033 /* SceneDispatch.swift in Sources */,
+				D4C241CF2732BB3300497077 /* SizeControlView.swift in Sources */,
 				D4C4680B273229D8008F3033 /* Deque.swift in Sources */,
 				D4C46809273229D8008F3033 /* Overload2D.swift in Sources */,
 				D4C467CE273228C3008F3033 /* SaumurApp.swift in Sources */,
-				D4C46824273270A4008F3033 /* CheckboxView.swift in Sources */,
+				D4C46824273270A4008F3033 /* VisibilityControlView.swift in Sources */,
 				D4C46818273229FF008F3033 /* Config.swift in Sources */,
 				D4C4681A27325C9F008F3033 /* SettingsView.swift in Sources */,
 				D4C46817273229FF008F3033 /* Settings.swift in Sources */,
