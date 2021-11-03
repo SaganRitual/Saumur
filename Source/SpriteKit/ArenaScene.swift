@@ -74,7 +74,7 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
         view.showsFPS = true
         view.showsNodeCount = true
 
-        backgroundColor = .black
+        backgroundColor = NSColor.windowBackgroundColor
 
         let base = Spinner(settings: settings, scene: self)
         let spinner1 = Spinner(settings: settings, parentSpinner: base, layerIndex: 1)
@@ -121,9 +121,11 @@ extension ArenaScene {
         if actionStatus == .none { return }
 
         let hue = Double(tickCount % 600) / 600
-        let color = NSColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
 
         for ix in 1..<spinners.count {
+            let adjustedHue = (spinners[ix].inkHue  + hue).truncatingRemainder(dividingBy: 1)
+            let color = NSColor(hue: adjustedHue, saturation: 1, brightness: 1, alpha: 1)
+
             let easyDot = dotsPool.makeSprite()
             easyDot.size = CGSize(width: 5, height: 5)
             easyDot.color = color

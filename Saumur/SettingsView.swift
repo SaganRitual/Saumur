@@ -7,13 +7,11 @@ struct SettingsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            ZoomSliderView()
-            .padding(.top, 10)
-            .padding([.leading, .trailing], 10)
+            PlaybackControlsView()
 
             Divider().background(Color.black).padding([.top, .bottom], -5)
 
-            Stepper("Pen: \(settings.penLengthFraction.asPropertyDisplayText)", value: $settings.penLengthFraction)
+            LayerControlView()
 
             Divider().background(Color.black).padding([.top, .bottom], -5)
 

@@ -9,6 +9,8 @@ class Spinner {
     let penTip: SKShapeNode!
     let ringShape: SKShapeNode!
 
+    var inkHue = Double.random(in: 0..<1)
+
     init(settings: Settings, scene: ArenaScene) {
         let rawSceneRadius = scene.frame.size.width / 2
         let ringRadius = rawSceneRadius * settings.ringRadiiFractions[0]
@@ -23,8 +25,8 @@ class Spinner {
         compensator = SKShapeNode(rect: rCompensator)
 
         compensator.position = .zero
-        compensator.fillColor = .orange
-        compensator.strokeColor = .yellow
+        compensator.fillColor = .clear
+        compensator.strokeColor = .clear
 
         scene.addChild(compensator)
         compensator.addChild(ringShape)
