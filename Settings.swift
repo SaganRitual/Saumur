@@ -8,8 +8,8 @@ class Settings: ObservableObject {
     @ClampValue(initValue: 0.75, min: 0, max: 10) var penLengthFraction: Double
     @ClampValue(initValue: 1.00, min: 0, max: 10) var rotationRateHertz: Double
 
-    @Published var ringRadiiFractions = [0.95, 0.2, 0.3, 0.2]
-    @Published var ringColors: [NSColor] = [.clear, .clear, .clear, .clear]
+    @Published var ringRadiiFractions = [0.95, 0.2, 0.2, 0.2]
+    @Published var ringColors: [NSColor] = [.cyan, .magenta, .yellow, .green]
     @Published var showPen = true
     @Published var showRings = true
     @Published var showTracks = true

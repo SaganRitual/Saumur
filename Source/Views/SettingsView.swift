@@ -9,7 +9,7 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 10) {
             PlaybackControlsView()
 
-            LayerControlView()
+            LayerScroller()
         }
         .frame(
             minWidth: 300, idealWidth: 300, maxWidth: nil,

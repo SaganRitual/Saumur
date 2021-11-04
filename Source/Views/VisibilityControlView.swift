@@ -21,7 +21,7 @@ struct VisibilityControlView: View {
     }
 }
 
-struct CheckBoxView_Previews: PreviewProvider {
+struct VisibilityControlView_Previews: PreviewProvider {
     struct CheckBoxViewHolder: View {
         @State var checked = false
 

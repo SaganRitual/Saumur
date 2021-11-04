@@ -27,5 +27,6 @@ struct ZoomSliderView_Previews: PreviewProvider {
 
     static var previews: some View {
         ZoomSliderView()
+            .environmentObject(Settings())
     }
 }

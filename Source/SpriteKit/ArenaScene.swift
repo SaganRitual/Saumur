@@ -48,15 +48,10 @@ class ArenaScene: SKScene, SKSceneDelegate, SKPhysicsContactDelegate, Observable
     init(settings: Settings, size: CGSize) {
         self.settings = settings
         self.dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 10000)
-        super.init(size: size)
-        anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        settings.$rotationRateHertz.sink(receiveCompletion: { _ in
-//        }, receiveValue: { value in
-//            DispatchQueue.global(qos: .userInitiated).async {
-//                settings.rotationRateHertz = value
-//            }
-//        }).store(in: &cancellables)
 
+        super.init(size: size)
+
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     // Schwamova 1:30 B♭+D, 5:14-5:26, 5:34, Similar but not quite at 7:25, 7:36, even closer at 7:40
     // 1:40 D+A♭, 4:08, 5:12, 7:12-7:21, 7:52-8:00 k448
