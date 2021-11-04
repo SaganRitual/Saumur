@@ -9,9 +9,13 @@ struct LayerControlsView: View {
 
     var body: some View {
         VStack {
+            Divider()
+            
             Text("Layer \(layerIx)")
-                .font(.title)
+                .font(.title2)
                 .foregroundColor(Color(NSColor.windowFrameTextColor))
+                .padding(.top, 10)
+                .padding(.bottom, -10)
 
             Spacer()
 

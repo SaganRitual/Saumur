@@ -7,19 +7,27 @@ struct SizeControlView: View {
 
     var body: some View {
         VStack {
-            Text("Spacer length").font(.title)
+            HStack {
+                Text("Spacer").font(.body)
+                    .frame(minWidth: 100, alignment: .leading)
 
-            Slider(
-                value: $settings.rotationRateHertz,
-                in: 0...10
-            )
+                Slider(
+                    value: $settings.rotationRateHertz,
+                    in: 0...10
+                )
+                .padding(.trailing)
+            }
 
-            Text("Pen length").font(.title)
+            HStack {
+                Text("Pen").font(.body)
+                    .frame(minWidth: 100, alignment: .leading)
 
-            Slider(
-                value: $settings.rotationRateHertz,
-                in: 0...10
-            )
+                Slider(
+                    value: $settings.rotationRateHertz,
+                    in: 0...10
+                )
+                .padding(.trailing)
+            }
         }
     }
 }

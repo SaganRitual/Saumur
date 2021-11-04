@@ -12,11 +12,10 @@ struct VisibilityControlView: View {
         HStack {
             Image(systemName: checked ? "checkmark.square.fill" : "square")
                 .foregroundColor(checked ? Color(NSColor.systemBlue) : Color.secondary)
-                .onTapGesture {
-                    self.checked.toggle()
-                }
+                .onTapGesture { self.checked.toggle() }
+                .frame(width: 30, alignment: .leading)
 
-            Text(label)
+            Text(label).font(.body)
         }
     }
 }

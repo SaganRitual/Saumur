@@ -15,6 +15,11 @@ struct ZoomSliderView: View {
                 in: 0...1,
                 onEditingChanged: { editing in
                     isEditing = editing
+                    if isEditing {
+                        arenaScene.speed = 0
+                    } else {
+                        arenaScene.speed = 1
+                    }
                 }
             )
         }

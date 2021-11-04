@@ -6,9 +6,11 @@ struct LayerScroller: View {
     @EnvironmentObject var settings: Settings
 
     var body: some View {
-        VStack {
-            ForEach(0..<6) { layerIx in
-                LayerControlsView(layerIx: layerIx)
+        ScrollView {
+            VStack {
+                ForEach(0..<6) { layerIx in
+                    LayerControlsView(layerIx: layerIx)
+                }
             }
         }
     }

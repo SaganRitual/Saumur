@@ -9,11 +9,14 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 10) {
             PlaybackControlsView()
 
+            Divider()
+                .padding(.bottom, 10)
+
             LayerScroller()
+                .padding(.bottom, 10)
         }
         .frame(
-            minWidth: 300, idealWidth: 300, maxWidth: nil,
-            minHeight: nil, idealHeight: nil, maxHeight: .infinity,
+            width: 300,
             alignment: .top
         )
     }

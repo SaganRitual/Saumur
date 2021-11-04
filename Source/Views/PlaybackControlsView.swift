@@ -16,7 +16,7 @@ struct PlaybackControlsView: View {
             VStack {
 
                 Text(displayHz)
-                    .font(.title)
+                    .font(.title2)
 
                 HStack {
                     Image(systemName: "stop.fill")

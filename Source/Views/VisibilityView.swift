@@ -14,18 +14,20 @@ struct VisibilityView: View {
     var body: some View {
         HStack {
             VStack {
-                Text("Visibility")
-                    .font(.title)
+                Text("Show")
+                    .font(.title3)
                     .foregroundColor(Color(NSColor.windowFrameTextColor))
-                    .padding(.bottom, 25)
+                    .padding(.top, -15)
+                    .padding(.bottom, 5)
 
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         VisibilityControlView(checked: $joint, label: "Joints")
                         VisibilityControlView(checked: $pen, label: "Pen")
                         VisibilityControlView(checked: $penTip, label: "Pen tip")
                     }
-                    VStack {
+                    Spacer()
+                    VStack(alignment: .leading) {
                         VisibilityControlView(checked: $ring, label: "Ring")
                         VisibilityControlView(checked: $spacer, label: "Spacer")
                         VisibilityControlView(checked: $centers, label: "Centers")
